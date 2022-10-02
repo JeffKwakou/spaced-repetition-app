@@ -1,0 +1,66 @@
+<header id="main-header">
+    <div class="container">
+        <div class="site-branding">
+            <a [routerLink]="['/home']" routerLinkActive="router-link-active" >RepeatAgain</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="signup-container">
+        <div class="signup-content">
+            <h2>S'inscrire</h2>
+
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignupForm()">
+                <div class="form-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Pseudo</mat-label>
+                        <input matInput formControlName="username" required>
+                        <mat-error *ngIf="signupForm.controls.email.invalid">{{getUsernameErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div class="form-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required>
+                        <mat-error *ngIf="signupForm.controls.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div formGroupName="passwords">
+                    <div class="form-container">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Mot de passe</mat-label>
+                            <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+                            <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="form-container">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Confirmation mot de passe</mat-label>
+                            <input matInput formControlName="confirmPassword" [type]="hideConfirmPassword ? 'password' : 'text'">
+                            <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+                              <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <div *ngIf="signupForm.errors?.['valuesDoNotMatch']" class="mat-error mat-form-field-subscript-wrapper">
+                                Les mots de passe doivent être identiques
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div> 
+    
+                <button type="submit" class="btn btn-block">Créer un compte</button>
+            </form>
+    
+            <div>
+                Déjà un compte ? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Se connecter</a>
+            </div>
+        </div>
+        
+    </div>    
+</main>

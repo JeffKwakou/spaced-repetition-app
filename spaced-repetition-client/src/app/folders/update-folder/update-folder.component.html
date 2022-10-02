@@ -1,0 +1,33 @@
+<div>
+    <h2>Modifier un dossier</h2>
+
+    <form [formGroup]="updateFolderForm" (ngSubmit)="onSubmitUpdateFolder()">
+        <div class="form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Titre</mat-label>
+                <input matInput formControlName="title" required>
+                <mat-error *ngIf="updateFolderForm.controls.title.invalid">Ce champs est requis</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Catégorie</mat-label>
+                <input matInput formControlName="category" required>
+                <mat-error *ngIf="updateFolderForm.controls.category.invalid">Ce champs est requis</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Type de révision</mat-label>
+                <mat-select formControlName="revision">
+                  <mat-option value="standard">Standard</mat-option>
+                  <mat-option value="quiz">Quiz</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button type="submit" mat-button color="primary">Modifier <mat-icon>autorenew</mat-icon></button>
+    </form>
+</div>

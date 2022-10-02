@@ -1,0 +1,47 @@
+<header id="main-header">
+    <div class="container">
+        <div class="site-branding">
+            <a [routerLink]="['/home']" routerLinkActive="router-link-active" >RepeatAgain</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="login-container">
+        <div class="login-content">
+            <h2>Se connecter</h2>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
+                <div class="form-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required>
+                        <mat-error *ngIf="loginForm.controls.email.invalid">Ce champ est requis</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div class="form-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Mot de passe</mat-label>
+                        <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+                        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="loginForm.controls.password.invalid">Ce champ est requis</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <button type="submit" class="btn btn-block">Créer un compte</button>
+            </form>
+    
+            <div>
+                <div class="forgot-password-container">
+                    <a [routerLink]="['/reset']" routerLinkActive="router-link-active" >Mot de passe oublié ?</a>
+                </div>
+                <div>
+                    Pas de compte ? <a [routerLink]="['/signup']" routerLinkActive="router-link-active" >S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

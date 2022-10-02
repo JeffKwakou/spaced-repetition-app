@@ -1,0 +1,30 @@
+<div>
+    <h2>Ajouter un nouveau dossier</h2>
+
+    <form [formGroup]="addFlashcardForm" (ngSubmit)="onSubmitAddFlashcard()">
+        <div class="form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Question</mat-label>
+                <input matInput formControlName="front" required>
+                <mat-error *ngIf="addFlashcardForm.controls.front.invalid">Ce champs est requis</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Réponse</mat-label>
+                <input matInput formControlName="back" required>
+                <mat-error *ngIf="addFlashcardForm.controls.back.invalid">Ce champs est requis</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Informations supplémentaires</mat-label>
+                <textarea matInput formControlName="note" ></textarea>
+              </mat-form-field>
+        </div>
+
+        <button type="submit" mat-button color="primary">Ajouter <mat-icon>add</mat-icon></button>
+    </form>
+</div>

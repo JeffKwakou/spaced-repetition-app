@@ -1,0 +1,26 @@
+.header-screen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.folder-card {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+
+    
+}
+
+.test {
+    position: relative;
+}
+
+.folder-card__option {
+    position: absolute;
+    top: 16px;
+    right: 0;
+}

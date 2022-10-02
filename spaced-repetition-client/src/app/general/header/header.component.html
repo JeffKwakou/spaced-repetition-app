@@ -1,0 +1,28 @@
+<header id="main-header">
+    <div class="container">
+        <div class="app-header-container">
+            <div class="site-branding">
+                <a [routerLink]="['/home']" routerLinkActive="router-link-active" >RepeatAgain</a>
+            </div>
+    
+            <div>
+                <nav>
+                    <div>
+                        <button mat-button>
+                            <mat-icon matBadge="0" matBadgeColor="warn">notifications</mat-icon>
+                        </button>
+                    </div>
+                    <div>
+                        <button mat-button [matMenuTriggerFor]="accountUser">
+                            <mat-icon>account_circle</mat-icon>
+                        </button>
+                        <mat-menu #accountUser="matMenu">
+                            <button mat-menu-item><mat-icon>settings</mat-icon>Paramètres</button>
+                            <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Se déconnecter</button>
+                        </mat-menu>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,85 @@
+<app-header></app-header>
+
+<main>
+    <div class="container">
+        <div class="header-screen">
+            <h2><button mat-button [routerLink]="['/folders']" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button> Mes dossiers</h2>
+
+            <div>
+                <button mat-mini-fab color="primary" aria-label="Bouton pour ajouter un nouveau dossier" (click)="openDialogAddFlashcard()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="filter-flashcard-container">
+            <form>
+                <div class="form-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Rechercher</mat-label>
+                        <input matInput type="text" name="search" [(ngModel)]="searchingFlashcard" (ngModelChange)="searchFlashcardByKeyword()">
+                    </mat-form-field>
+                </div>
+            </form>
+
+            <div>
+                <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">
+                    Filtrer les cartes
+                </button>
+                <mat-menu #menu="matMenu">
+                    <div>Trier les cartes par</div>
+                    <button mat-menu-item (click)="onFilterFlashcards('default')">
+                        Défaut
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.default">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('front')">
+                        Recto
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.front">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('back')">
+                        Verso
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.back">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('revisiondate')">
+                        Date de révision
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.revisiondate">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('lastadd')">
+                        Dernier ajout
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.lastadd">done</mat-icon>
+                    </button>
+                </mat-menu>
+            </div>
+
+            <div>
+                <button mat-flat-button color="accent" [routerLink]="['/revision', folderId]" routerLinkActive="router-link-active" >
+                    Lancer une révision
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4" *ngFor="let flashcard of flashcards">
+                <mat-card class="mat-elevation-z3 flashcard-card" [ngClass]="{'flashcard-card_prior': !checkDateFolder(flashcard.date_revision)}">
+                    <mat-card-title>{{ flashcard.front }}</mat-card-title>
+                    <mat-card-title>{{ flashcard.back }}</mat-card-title>
+                    <mat-card-subtitle>Prochaine révision le {{ flashcard.date_revision | date: 'dd MMMM YYYY' }}</mat-card-subtitle>
+
+                    <div class="flashcard-card__option">
+                        <button mat-button [matMenuTriggerFor]="flashcardOption">
+                            <mat-icon aria-hidden="false" aria-label="Example home icon">more_vert</mat-icon>
+                        </button>
+                        <mat-menu #flashcardOption="matMenu">
+                            <button mat-menu-item (click)="openDialogUpdateFlashcard(flashcard._id)">
+                                Modifier
+                            </button>
+                            <button mat-menu-item (click)="deleteFlashcard(flashcard._id)">
+                                Supprimer
+                            </button>
+                        </mat-menu>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</main>
