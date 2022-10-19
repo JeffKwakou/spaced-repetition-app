@@ -63,6 +63,7 @@ import { FlashcardListComponent } from './flashcards/flashcard-list/flashcard-li
 import { AddFlashcardComponent } from './flashcards/add-flashcard/add-flashcard.component';
 import { UpdateFlashcardComponent } from './flashcards/update-flashcard/update-flashcard.component';
 import { SessionComponent } from './revision/session/session.component';
+import { MessageViewComponent } from './reset/message-view/message-view.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { SessionComponent } from './revision/session/session.component';
     FlashcardListComponent,
     AddFlashcardComponent,
     UpdateFlashcardComponent,
-    SessionComponent
+    SessionComponent,
+    MessageViewComponent
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         'password': this.loginForm.value.password
       }
 
-      this.authenticationService.login(formFields)
+      const loginResponse = this.authenticationService.login(formFields)
     }
   }
 

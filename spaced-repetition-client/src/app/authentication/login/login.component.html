@@ -9,7 +9,7 @@
 <main>
     <div class="login-container">
         <div class="login-content">
-            <h2>Se connecter</h2>
+            <h1>Se connecter</h1>
 
             <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
                 <div class="form-container">
@@ -31,10 +31,10 @@
                     </mat-form-field>
                 </div>
     
-                <button type="submit" class="btn btn-block">Créer un compte</button>
+                <button mat-flat-button type="submit" class="button-primary btn-large btn-auth" color="primary">Se connecter</button>
             </form>
     
-            <div>
+            <div class="authentication-links">
                 <div class="forgot-password-container">
                     <a [routerLink]="['/reset']" routerLinkActive="router-link-active" >Mot de passe oublié ?</a>
                 </div>

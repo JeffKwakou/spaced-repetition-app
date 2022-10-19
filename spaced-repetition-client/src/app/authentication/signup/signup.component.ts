@@ -29,39 +29,6 @@ export class SignupComponent implements OnInit {
   }, {
     validators: this.authenticationService.controlValuesAreEqual(['passwords', 'password'], ['passwords', 'confirmPassword'])
   })
-  
-  // VALIDATION FORM CONTROLS
-  getEmailErrorMessage(): string {
-    if (this.signupForm.get('email')?.hasError('required')) {
-      return 'L\'email est requis';
-    }
-
-    return this.signupForm.get('email')?.hasError('email') ? 'email invalide' : '';
-  }
-
-  getUsernameErrorMessage(): string {
-    if (this.signupForm.get('username')?.errors?.['required']) {
-      return 'Le pseudo est requis';
-    }
-
-    if (this.signupForm.get('username')?.errors?.['minlength']) {
-      return 'Le pseudo doit contenir au minimum 4 caractères';
-    }
-
-    return this.signupForm.get('username')?.hasError('pattern') ? 'Le pseudo doit contenir uniquement des caractères' : '';
-  }
-
-  getPasswordErrorMessage(): string {
-    if (this.signupForm.get(['passwords', 'password'])?.hasError('required')) {
-      return 'Le mot de passe est requis';
-    }
-
-    if (this.signupForm.get(['passwords', 'password'])?.hasError('minlength')) {
-      return 'Le pseudo doit contenir au minimum 6 caractères';
-    }
-
-    return this.signupForm.get(['passwords', 'password'])?.hasError('pattern') ? 'Le pseudo doit contenir au minimum : 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial' : '';
-  }
 
   // SUBMIT FORM
   onSubmitSignupForm() {

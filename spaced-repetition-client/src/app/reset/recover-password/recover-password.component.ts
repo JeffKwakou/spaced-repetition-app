@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -9,13 +10,13 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class RecoverPasswordComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService) { }
+  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   recoverForm = this.fb.group({
-    email: ['', [Validators.required]]
+    email: ['', [Validators.required, Validators.email]]
   })
 
   onSubmitRecover() {
@@ -26,6 +27,7 @@ export class RecoverPasswordComponent implements OnInit {
 
       this.authenticationService.passwordRecover(passwordRecover).subscribe((res: any) => {
         console.log(res)
+        this.router.navigate(['/forgot/password'], {queryParams: {view: 'emailSended'}})
       })
     }
   }

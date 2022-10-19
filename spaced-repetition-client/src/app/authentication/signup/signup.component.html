@@ -9,14 +9,16 @@
 <main>
     <div class="signup-container">
         <div class="signup-content">
-            <h2>S'inscrire</h2>
+            <h1>S'inscrire</h1>
 
             <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignupForm()">
                 <div class="form-container">
                     <mat-form-field appearance="fill">
                         <mat-label>Pseudo</mat-label>
                         <input matInput formControlName="username" required>
-                        <mat-error *ngIf="signupForm.controls.email.invalid">{{getUsernameErrorMessage()}}</mat-error>
+                        <mat-error *ngIf="signupForm.controls.username.hasError('required')">Ce champ est requis</mat-error>
+                        <mat-error *ngIf="signupForm.controls.username.hasError('minlength')">Ce champ doit contenir au minimum 4 caractères</mat-error>
+                        <mat-error *ngIf="signupForm.controls.username.hasError('pattern')">Ce champ doit contenir uniquement des caractères alphabétiques</mat-error>
                     </mat-form-field>
                 </div>
     
@@ -24,7 +26,8 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" required>
-                        <mat-error *ngIf="signupForm.controls.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+                        <mat-error *ngIf="signupForm.controls.email.hasError('required')">Ce champ est requis</mat-error>
+                        <mat-error *ngIf="signupForm.controls.email.hasError('email')">Ce champs doit être un email valide</mat-error>
                     </mat-form-field>
                 </div>
     
@@ -36,7 +39,9 @@
                             <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
                               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('required')">Ce champ est requis</mat-error>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('minlength')">Ce champs doit contenir au minimum 4 caractères</mat-error>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('pattern')">Le pseudo doit contenir au minimum : 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial</mat-error>
                         </mat-form-field>
                     </div>
         
@@ -47,17 +52,16 @@
                             <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
                               <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <div *ngIf="signupForm.errors?.['valuesDoNotMatch']" class="mat-error mat-form-field-subscript-wrapper">
-                                Les mots de passe doivent être identiques
-                            </div>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.confirmPassword.hasError('required')">Ce champ est requis</mat-error>
+                            <mat-error *ngIf="signupForm.errors?.['valuesDoNotMatch']">Les mots de passe doivent être identiques</mat-error>
                         </mat-form-field>
                     </div>
                 </div> 
     
-                <button type="submit" class="btn btn-block">Créer un compte</button>
+                <button mat-flat-button type="submit" class="button-primary btn-large btn-auth" color="primary">Créer un compte</button>
             </form>
     
-            <div>
+            <div class="authentication-links">
                 Déjà un compte ? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Se connecter</a>
             </div>
         </div>

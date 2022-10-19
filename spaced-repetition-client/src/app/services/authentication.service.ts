@@ -23,6 +23,9 @@ export class AuthenticationService {
     return this.apiService.login(formFields).subscribe((res: any) => {
       localStorage.setItem(JWT_NAME, res.body.token)
       this.router.navigate(['folders'])
+    },
+    (error) => {
+      return false;
     })
   }
 
