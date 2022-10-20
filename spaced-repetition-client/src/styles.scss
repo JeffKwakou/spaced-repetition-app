@@ -1,17 +1,73 @@
-/* Import material theming  */
+/**
+* ------------------------------------------------
+* ANGULAR MATERIAL THEMING
+* ------------------------------------------------
+*/
+@use '@angular/material' as mat;
+
 @import '~@angular/material/theming';
-@include mat-core();
 
-@import './material/theme.scss';
+// Typography config
+$my-custom-typography: mat.define-typography-config(
+    $font-family: 'Poppins, sans-serif',
+    $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+    $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+    $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+    $display-1: mat.define-typography-level(34px, 40px, 400),
+    $headline: mat-typography-level(32px, 48px, 700),
+    $button: mat.define-typography-level(14px, 100%, 400)
+);
 
-// Light theme color by default
-@include angular-material-theme($light-theme);
+@include mat-core($my-custom-typography);
+
+// Define a light theme
+$light-primary: mat.define-palette(mat.$pink-palette);
+$light-accent: mat.define-palette(mat.$pink-palette);
+$angular-warn: mat.define-palette(mat.$red-palette);
+$light-theme: mat.define-light-theme((
+ color: (
+   primary: $light-primary,
+   accent: $light-accent,
+   warn: $angular-warn,
+ ),
+ typography: $my-custom-typography
+));
+
+// Define a dark theme
+$dark-primary: mat.define-palette(mat.$pink-palette);
+$dark-accent: mat.define-palette(mat.$blue-grey-palette);
+$angular-warn: mat.define-palette(mat.$red-palette);
+$dark-theme: mat.define-dark-theme((
+ color: (
+   primary: $dark-primary,
+   accent: $dark-accent,
+   warn: $angular-warn,
+ ),
+ typography: $my-custom-typography
+));
+
+// Apply the dark theme by default
+.dark-theme {
+    @include mat.core-theme($dark-theme);
+    @include mat.all-component-themes($dark-theme);
+}
+
+// Apply the light theme only when the `.my-light-theme` CSS class is applied
+// to an ancestor element of the components (such as `body`).
+.light-theme {
+ @include mat.core-color($light-theme);
+ @include mat.all-component-themes($light-theme);
+}
+
+// Global variable color angular material
+$primary: mat-color($light-primary);
+// $accent: mat-color($accent);
+// $error: mat-color($warn);
 
 // Angular material element
 .basic-card {
     margin: 20px 0
 }
-
 
 // Colors
 $black: #000;
@@ -29,7 +85,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-main {
+.body-content {
     margin-top: 100px;
 }
 
@@ -50,7 +106,7 @@ main {
     align-items: center;
 
     a {
-        color: $blue;
+        color: $primary;
         font-size: 20px;
         font-weight: 700;
         text-decoration: none;
@@ -62,39 +118,54 @@ a {
 }
 
 
-// Buttons
-.btn {
-    font-weight: 500;
-    border-radius: 4px;
-    line-height: 1.4em;
-    padding: 14px 33px 14px;
-    font-size: 16px;
-    border: 0 solid rgba(0,0,0,0);
-    color: $white;
-    // box-shadow: 0 1px 3px rgb(0 0 0 / 8%), 0 2px 4px rgb(0 0 0 / 12%);
-    background: $blue;
-    letter-spacing: -.01em;
-    transition: all .3s ease;
-    margin-bottom: 20px;
+/**
+* ------------------------------------------------
+* BUTTONS
+* ------------------------------------------------
+*/
+.mat-flat-button.button-primary {
+    line-height: 45px;
+    padding: 0px 32px;
+    border-radius: 50px;
 
     &:hover {
         box-shadow: 0 7px 14px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 8%);
-        background: #4d8dfd;
-        color: $white;
-        outline: 0;
+        filter: brightness(130%);
     }
 }
 
-.btn-block {
+.mat-flat-button.btn-large {
     width: 100%;
 }
 
-.btn-cancel {
-    background-color: #dc3545;
+.mat-flat-button.btn-auth {
+    text-transform: uppercase;
+    font-weight: 400;
+}
 
-    &:hover {
-        background-color: #e95664;
-    }
+/**
+* ------------------------------------------------
+* INPUTS
+* ------------------------------------------------
+*/
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 50px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important; 
+    border: 1px solid transparent !important;
+}
+
+.mat-focused .mat-form-field-flex {
+    border: 1px solid $primary !important;
+    box-shadow: 0 7px 14px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 8%);
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 15px;
 }
 
 // Image
@@ -106,4 +177,13 @@ img {
 // Forms
 mat-form-field {
     width: 100%;
+}
+
+/**
+* ------------------------------------------------
+* AUTHENTICATION PAGES
+* ------------------------------------------------
+*/
+.authentication-links {
+    margin-top: 20px;
 }

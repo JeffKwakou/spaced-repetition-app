@@ -1,23 +1,11 @@
-$light-theme-primary: mat-palette($mat-blue, A400);
-$light-theme-accent: mat-palette($mat-orange, A400);
-$light-theme-warn: mat-palette($mat-red, 800);
-
-// create theme (use mat-dark-theme for themes with dark backgrounds)
-$light-theme: mat-light-theme(
-    $light-theme-primary,
-    $light-theme-accent,
-    $light-theme-warn
-);
-
-
 // Define typography (font-size, line-height, font-weight, font-family, letter spacing)
 $custom-typography: mat-typography-config(
     $display-4: mat-typography-level(112px, 112px, 300, Poppins, -0.05em),
     $display-3: mat-typography-level(56px, 56px, 400, Poppins, -0.02em),
     $display-2: mat-typography-level(45px, 48px, 400, Poppins, -0.005em),
     $display-1: mat-typography-level(34px, 40px, 400, Poppins),
-    $headline:  mat-typography-level(24px, 110%, 400, Poppins),
-    $title:  mat-typography-level(30px, 100%, 600, Poppins),
+    $headline:  mat-typography-level(36px, 110%, 400, Poppins),
+    $title:  mat-typography-level(36px, 100%, 600, Poppins),
     $subheading-2:  mat-typography-level(30px, 100%, 600, Poppins),
     $subheading-1:  mat-typography-level(30px, 100%, 600, Poppins),
     $body-1: mat-typography-level(14px, 120%, 400, Poppins),
@@ -25,5 +13,3 @@ $custom-typography: mat-typography-config(
     $caption: mat-typography-level(14px, 100%, 500, Poppins),
     $button: mat-typography-level(14px, 100%, 500, Poppins),
 );
-
-@include angular-material-typography($custom-typography);
