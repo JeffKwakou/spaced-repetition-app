@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+@import '../assets/fonts/Poppins/poppins';
+
+// Doc typography Angular Material
+// https://material.angular.io/guide/typography#typography-levels
+
+$spaced-repetition-typography: mat.define-typography-config(
+    $font-family: 'Poppins',
+    $headline: mat.define-typography-level(36px, 48px, 700),
+    $button: mat.define-typography-level(14px, 100%, 400)
+);
+
+.light-theme, .dark-theme {
+    @include mat.core($spaced-repetition-typography);
+}
