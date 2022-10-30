@@ -2,17 +2,22 @@
     <div class="container">
         <div class="app-header-container">
             <div class="site-branding">
-                <a [routerLink]="['/home']" routerLinkActive="router-link-active" >RepeatAgain</a>
+                <a [routerLink]="['/login']" routerLinkActive="router-link-active" >RepeatAgain</a>
             </div>
     
             <div>
                 <nav>
-                    <div>
+                    <div *ngIf="isAuthenticated">
                         <button mat-button>
                             <mat-icon matBadge="0" matBadgeColor="warn">notifications</mat-icon>
                         </button>
                     </div>
                     <div>
+                        <button mat-button (click)="setDarkTheme()">
+                            <mat-icon>dark_mode</mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="isAuthenticated">
                         <button mat-button [matMenuTriggerFor]="accountUser">
                             <mat-icon>account_circle</mat-icon>
                         </button>

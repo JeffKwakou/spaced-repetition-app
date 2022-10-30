@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -8,8 +8,15 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  isAuthenticated: boolean;
 
-  constructor(private authenticationService: AuthenticationService, private route: Router) { }
+  isThemeDark: boolean = false;
+
+  constructor(private authenticationService: AuthenticationService, private route: Router) { 
+    route.events.subscribe(val => {
+      this.isAuthenticated = this.authenticationService.isAuthenticated()
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -17,6 +24,18 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     this.authenticationService.logout();
     this.route.navigate(['/login'])
+  }
+
+  setDarkTheme() {
+    if (!this.isThemeDark) {
+      document.querySelector('body')?.classList.remove('light-theme')
+      document.querySelector('body')?.classList.add('dark-theme')
+      this.isThemeDark = true
+    } else {
+      document.querySelector('body')?.classList.add('light-theme')
+      document.querySelector('body')?.classList.remove('dark-theme')
+      this.isThemeDark = false
+    }
   }
 
 }
