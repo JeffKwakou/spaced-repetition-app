@@ -6,17 +6,12 @@ import { FlashcardListComponent } from './flashcards/flashcard-list/flashcard-li
 import { FolderListComponent } from './folders/folder-list/folder-list.component';
 import { AuthRoutesGuard } from './guards/auth-routes.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MessageViewComponent } from './reset/message-view/message-view.component';
 import { RecoverPasswordComponent } from './reset/recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset/reset-password/reset-password.component';
 import { SessionComponent } from './revision/session/session.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: LandingPageComponent
-  },
   // Authentication
   {
     path: 'signup',
@@ -64,7 +59,7 @@ const routes: Routes = [
   // Default routes
   {
     path: '**',
-    redirectTo:'home', 
+    redirectTo:'login', 
     pathMatch: 'full' 
   }
 ];

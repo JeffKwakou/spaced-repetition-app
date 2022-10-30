@@ -46,7 +46,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -68,7 +67,6 @@ import { MessageViewComponent } from './reset/message-view/message-view.componen
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent,
     SignupComponent,
     LoginComponent,
     FolderListComponent,
