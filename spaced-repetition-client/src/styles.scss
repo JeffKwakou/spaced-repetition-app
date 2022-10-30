@@ -130,3 +130,17 @@ mat-form-field {
 .authentication-links {
     margin-top: 20px;
 }
+
+/**
+* ------------------------------------------------
+* FORMS
+* ------------------------------------------------
+*/
+.form-error__message {
+    color: red;
+    text-align: left;
+    padding: 10px 20px;
+    border-left: 3px solid red;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -10,12 +11,17 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class SignupComponent implements OnInit {
 
-  hidePassword = true;
-  hideConfirmPassword = true;
+  hidePassword: boolean = true;
+  hideConfirmPassword: boolean = true;
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private snackBar: MatSnackBar) { }
+  signupFormErrorMessage: string = "";
+
+  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private snackBar: MatSnackBar, private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.signupForm.statusChanges.subscribe(result => {
+      this.signupFormErrorMessage = "";
+    })
   }
 
   // INIT SIGNUP FORM
@@ -39,16 +45,20 @@ export class SignupComponent implements OnInit {
         'password': this.signupForm.value.passwords?.password
       }
 
-      this.authenticationService.register(formFields).subscribe((res: any) => {
+      this.apiService.register(formFields).subscribe((res: any) => {
         this.snackBar.open(res.body.message, 'OK', {
           duration: 5000
         })
       },
       (res: any) => {
+        console.log("ici")
+        this.signupFormErrorMessage = res.error.message
         this.snackBar.open(res.error.message, 'OK', {
           duration: 5000
         })
       })
+    } else {
+      this.signupFormErrorMessage = "Veuillez corriger les erreurs du formulaire"
     }
   }
 }

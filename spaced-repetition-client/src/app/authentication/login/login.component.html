@@ -13,6 +13,10 @@
                 <h1>Se connecter</h1>
             </div>
 
+            <div *ngIf="loginFormErrorMessage" class="form-error__message mat-elevation-z1">
+                {{ loginFormErrorMessage }}
+            </div>
+
             <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
                 <div class="form-container">
                     <mat-form-field appearance="fill">

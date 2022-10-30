@@ -15,7 +15,7 @@ export class ApiService {
   // ---------------------------------------------
   // AUTHENTICATION ROUTES
   // ---------------------------------------------
-  signup(formFields: object) {
+  register(formFields: object) {
     return this.http.post(this.APIURL + "/auth/register", formFields, { observe: 'response' });
   }
 

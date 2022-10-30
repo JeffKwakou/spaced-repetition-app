@@ -13,30 +13,9 @@ export class AuthenticationService {
 
   constructor(private apiService: ApiService, private jwtHelper: JwtHelperService, private router: Router) { }
 
-  // Register request
-  register(formFields: object) {
-    return this.apiService.signup(formFields)
-  }
-
-  // Login request
-  login(formFields: object) {
-    return this.apiService.login(formFields).subscribe((res: any) => {
-      localStorage.setItem(JWT_NAME, res.body.token)
-      this.router.navigate(['folders'])
-    },
-    (error) => {
-      return false;
-    })
-  }
-
-  // Recover password request
-  passwordRecover(userEmailRecover: object) {
-    return this.apiService.passwordRecover(userEmailRecover)
-  }
-
-  // Reset password request
-  resetPassword(newPassword: object, token: string) {
-    return this.apiService.resetPassword(newPassword, token)
+  // Store JWT Token in local storage
+  login(response: any): void {
+    localStorage.setItem(JWT_NAME, response.token)
   }
 
   isAuthenticated(): boolean {

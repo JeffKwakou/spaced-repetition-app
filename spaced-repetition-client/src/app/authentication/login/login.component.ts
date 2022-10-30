@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -11,9 +13,14 @@ export class LoginComponent implements OnInit {
 
   hidePassword = true;
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService) { }
+  loginFormErrorMessage: string = "";
+
+  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loginForm.statusChanges.subscribe(res => {
+      this.loginFormErrorMessage = "";
+    })
   }
 
   // INIT LOGIN FORM
@@ -30,7 +37,19 @@ export class LoginComponent implements OnInit {
         'password': this.loginForm.value.password
       }
 
-      const loginResponse = this.authenticationService.login(formFields)
+      // this.authenticationService.login(formFields);
+
+      this.apiService.login(formFields).subscribe((res: any) => {
+        console.log("Connecté")
+        this.authenticationService.login(res.body)
+        this.router.navigate(['folders'])
+      },
+      (error: any) => {
+        console.log("problème de conenxion")
+        this.loginFormErrorMessage = "L'email ou le mot de passe sont incorrects";
+      });
+    } else {
+      this.loginFormErrorMessage = "Veuillez corriger les erreurs du formulaire";
     }
   }
 

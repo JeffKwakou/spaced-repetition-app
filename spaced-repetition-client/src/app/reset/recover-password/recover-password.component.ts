@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class RecoverPasswordComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,8 +26,7 @@ export class RecoverPasswordComponent implements OnInit {
         "email": this.recoverForm.value.email
       }
 
-      this.authenticationService.passwordRecover(passwordRecover).subscribe((res: any) => {
-        console.log(res)
+      this.apiService.passwordRecover(passwordRecover).subscribe((res: any) => {
         this.router.navigate(['/forgot/password'], {queryParams: {view: 'emailSended'}})
       })
     }

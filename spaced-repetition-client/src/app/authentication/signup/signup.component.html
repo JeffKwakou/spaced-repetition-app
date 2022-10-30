@@ -9,7 +9,13 @@
 <main>
     <div class="signup-container">
         <div class="signup-content">
-            <h1>S'inscrire</h1>
+            <div class="mat-typography">
+                <h1>S'inscrire</h1>
+            </div>
+
+            <div *ngIf="signupFormErrorMessage" class="form-error__message mat-elevation-z1">
+                {{ signupFormErrorMessage }}
+            </div>
 
             <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignupForm()">
                 <div class="form-container">

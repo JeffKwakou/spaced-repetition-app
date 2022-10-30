@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
 
   tokenParam?: string
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private activatedRoute: ActivatedRoute, private router: Router, private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.tokenParam = this.activatedRoute.snapshot.paramMap.get('token') || undefined;
@@ -51,9 +52,7 @@ export class ResetPasswordComponent implements OnInit {
         'confirmPassword': this.resetForm.value.confirmPassword
       }
 
-      this.authenticationService.resetPassword(newPassword, this.tokenParam!).subscribe((res) => {
-        console.log(res)
-
+      this.apiService.resetPassword(newPassword, this.tokenParam!).subscribe((res) => {
         this.router.navigate(['/login'])
       })
     }
