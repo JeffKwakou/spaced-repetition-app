@@ -13,6 +13,13 @@
                         </button>
                     </div>
                     <div>
+                        <form class="form-group">
+                            <select class="form-control" [(ngModel)]="selectLang" name="selectLang" (change)="setTransLanguage()">
+                            <option *ngFor="let lang of TransLang" value="{{lang}}">{{ lang | uppercase }}</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div>
                         <button mat-button (click)="setDarkTheme()">
                             <mat-icon>dark_mode</mat-icon>
                         </button>
@@ -22,8 +29,8 @@
                             <mat-icon>account_circle</mat-icon>
                         </button>
                         <mat-menu #accountUser="matMenu">
-                            <button mat-menu-item><mat-icon>settings</mat-icon>Paramètres</button>
-                            <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Se déconnecter</button>
+                            <button mat-menu-item><mat-icon>{{'header.settings' | translate}}</mat-icon>Paramètres</button>
+                            <button mat-menu-item (click)="onLogout()"><mat-icon>{{'header.logout' | translate}}</mat-icon>Se déconnecter</button>
                         </mat-menu>
                     </div>
                 </nav>

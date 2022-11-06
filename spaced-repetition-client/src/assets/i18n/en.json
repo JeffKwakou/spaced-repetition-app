@@ -1,0 +1,17 @@
+{
+    "header": {
+        "settings": "Settings",
+        "logout": "Logout"
+    },
+    "form": {
+        "email": "Email",
+        "required": "This field is required",
+        "password": "Password",
+        "forgotPassword": "Forgot password ?",
+        "signup": "Sign up",
+        "login": "Login"
+    },
+    "authentication": {
+        "login": "Login"
+    }
+}

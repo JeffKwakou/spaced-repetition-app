@@ -1,0 +1,17 @@
+{
+    "header": {
+        "settings": "Paramètres",
+        "logout": "Se déconnecter"
+    },
+    "form": {
+        "email": "Email",
+        "required": "Ce champs est requis",
+        "password": "Mot de passe",
+        "forgotPassword": "Mot de passe oublié ?",
+        "signup": "S'inscrire",
+        "login": "Se connecter"
+    },
+    "authentication": {
+        "login": "Se connecter"
+    }
+}

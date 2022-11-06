@@ -49,7 +49,7 @@ import { MatTableModule } from '@angular/material/table';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { FolderListComponent } from './folders/folder-list/folder-list.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
@@ -63,6 +63,12 @@ import { AddFlashcardComponent } from './flashcards/add-flashcard/add-flashcard.
 import { UpdateFlashcardComponent } from './flashcards/update-flashcard/update-flashcard.component';
 import { SessionComponent } from './revision/session/session.component';
 import { MessageViewComponent } from './reset/message-view/message-view.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -124,7 +130,14 @@ import { MessageViewComponent } from './reset/message-view/message-view.componen
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    TranslateModule.forRoot({
+      loader: {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     JwtHelperService,

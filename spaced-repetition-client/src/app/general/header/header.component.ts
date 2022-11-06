@@ -1,5 +1,6 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -12,26 +13,35 @@ export class HeaderComponent implements OnInit {
 
   isThemeDark: boolean = false;
 
-  constructor(private authenticationService: AuthenticationService, private route: Router) { 
+  selectLang:string="fr";
+  TransLang: string[] = [];
+
+  constructor(private authenticationService: AuthenticationService, private route: Router, private translate: TranslateService) { 
     route.events.subscribe(val => {
       this.isAuthenticated = this.authenticationService.isAuthenticated()
     })
 
-    this.checkLocalStorage()
+    translate.setDefaultLang('fr');
+    translate.addLangs(['en', 'fr']);
+    translate.use('fr');
   }
 
   ngOnInit(): void {
+    this.getTransLanguage();
+  }
+
+  // i18n
+  setTransLanguage(){
+    this.translate.use(this.selectLang);
+  }
+
+  getTransLanguage(){
+    this.TransLang=[...this.translate.getLangs()];
   }
 
   onLogout() {
     this.authenticationService.logout();
     this.route.navigate(['/login'])
-  }
-
-  checkLocalStorage() {
-    let darkModeActive = localStorage.getItem('dark-mode')
-    console.log(darkModeActive);
-    
   }
 
   setDarkTheme() {
