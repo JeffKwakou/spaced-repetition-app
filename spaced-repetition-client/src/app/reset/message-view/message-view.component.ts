@@ -9,20 +9,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MessageViewComponent implements OnInit {
 
   viewName: string;
+  viewEmail: string;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.viewName = this.route.snapshot.queryParamMap.get('view') || '';
+    this.viewEmail = this.route.snapshot.queryParamMap.get('email') || '';
   }
 
-  displayView() {
+  displayViewEmail() {
     if (this.viewName == 'emailSended') {
       return true;
-    } else if (this.viewName == 'passwordReseted') {
+    } 
+
+    return false;
+  }
+
+  displayViewPassword() {
+    if (this.viewName == 'passwordReseted') {
       return true;
-    } else {
-      return false;
     }
+
+    return false;
   }
 }

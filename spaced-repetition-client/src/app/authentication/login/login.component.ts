@@ -40,12 +40,10 @@ export class LoginComponent implements OnInit {
       // this.authenticationService.login(formFields);
 
       this.apiService.login(formFields).subscribe((res: any) => {
-        console.log("Connecté")
         this.authenticationService.login(res.body)
         this.router.navigate(['folders'])
       },
       (error: any) => {
-        console.log("problème de conenxion")
         this.loginFormErrorMessage = "L'email ou le mot de passe sont incorrects";
       });
     } else {

@@ -15,6 +15,7 @@ export class ResetPasswordComponent implements OnInit {
   hideConfirmPassword = true
 
   tokenParam?: string
+  formErrorMessage: string;
 
   constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private activatedRoute: ActivatedRoute, private router: Router, private apiService: ApiService) { }
 
@@ -53,8 +54,14 @@ export class ResetPasswordComponent implements OnInit {
       }
 
       this.apiService.resetPassword(newPassword, this.tokenParam!).subscribe((res) => {
-        this.router.navigate(['/login'])
+        this.router.navigate(['/forgot/password'], {queryParams: { view: 'passwordReseted' }})
+      },
+      (error: any) => {
+        console.log(error)
+        this.formErrorMessage = error.error.message;
       })
+    } else {
+      this.formErrorMessage = "Veuillez corriger les erreurs du formulaire";
     }
   }
 }

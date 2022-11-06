@@ -10,6 +10,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./recover-password.component.scss']
 })
 export class RecoverPasswordComponent implements OnInit {
+  formErrorMessage: string;
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { }
 
@@ -24,11 +25,13 @@ export class RecoverPasswordComponent implements OnInit {
     if (!this.recoverForm.invalid) {
       let passwordRecover = {
         "email": this.recoverForm.value.email
-      }
+      };
 
       this.apiService.passwordRecover(passwordRecover).subscribe((res: any) => {
-        this.router.navigate(['/forgot/password'], {queryParams: {view: 'emailSended'}})
-      })
+        this.router.navigate(['/forgot/password'], {queryParams: {view: 'emailSended', email: this.recoverForm.value.email}})
+      });
+    } else {
+      this.formErrorMessage = "Veuillez corriger les erreurs du formulaire";
     }
   }
 

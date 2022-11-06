@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+
+
+
+.light-theme  {
+    a {
+        text-decoration: none;
+        color: $blue;
+    
+        &:hover {
+            color: mat.get-color-from-palette($blue-palette, 900);
+            text-decoration: underline;
+        }
+    }
+}
+
+.dark-theme {
+    a {
+        text-decoration: none;
+        color: $blue;
+    
+        &:hover {
+            color: mat.get-color-from-palette($blue-palette, 300);
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,115 @@
+// Angular Material theming
+// https://material.angular.io/guide/theming#palettes
+
+$green: #30BF7C;
+$red: #eb3e41;
+$blue: #5298F2;
+$orange: #F29F05;
+$white: #ffffff;
+$black: #000000;
+$light-grey: #D9D9D9;
+$light-grey-second: #BFBFBF;
+$grey: #8C8C8C;
+$dark-grey: #404040;
+
+
+// PALETTES
+$blue-palette: (
+ 50: #CBDCEF,
+ 100: #B4D0EF,
+ 200: #9CC4EF,
+ 300: #84B8EF,
+ 400: #6BB0ED,
+ 500: $blue,
+ 600: #3A8DD8,
+ 700: #2977CC,
+ 800: #206BBC,
+ 900: #1459A5,
+ contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);
+
+$red-palette: (
+ 50: #EAB5B8,
+ 100: #EA9DA1,
+ 200: #EA868B,
+ 300: #EA6E75,
+ 400: #EA575F,
+ 500: $red,
+ 600: #DB2E37,
+ 700: #CC1F28,
+ 800: #BC131C,
+ 900: #9E0B19,
+ contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);
+
+$orange-palette: (
+ 50: #EFCD97,
+ 100: #EFC47F,
+ 200: #EFBB67,
+ 300: #EFB250,
+ 400: #EDA337,
+ 500: $orange,
+ 600: #DD860A,
+ 700: #CE8106,
+ 800: #BA730C,
+ 900: #AD6D07,
+ contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);
+
+$green-palette: (
+ 50: #8FBCA5,
+ 100: #7BBA99,
+ 200: #69BC93,
+ 300: #57BC89,
+ 400: #44BC80,
+ 500: $green,
+ 600: #21AA65,
+ 700: #1B9E5C,
+ 800: #108E4F,
+ 900: #07753E,
+ contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);

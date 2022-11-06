@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
     route.events.subscribe(val => {
       this.isAuthenticated = this.authenticationService.isAuthenticated()
     })
+
+    this.checkLocalStorage()
   }
 
   ngOnInit(): void {
@@ -24,6 +26,12 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     this.authenticationService.logout();
     this.route.navigate(['/login'])
+  }
+
+  checkLocalStorage() {
+    let darkModeActive = localStorage.getItem('dark-mode')
+    console.log(darkModeActive);
+    
   }
 
   setDarkTheme() {

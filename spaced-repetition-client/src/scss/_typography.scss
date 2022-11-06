@@ -5,8 +5,10 @@
 // https://material.angular.io/guide/typography#typography-levels
 
 $spaced-repetition-typography: mat.define-typography-config(
-    $font-family: 'Poppins',
-    $headline: mat.define-typography-level(36px, 48px, 700),
+    $font-family: 'Poppins, sans-serif',
+    $headline: mat.define-typography-level(30px, 120%, 700),
+    $body-1: mat.define-typography-level(14px, 130%, 400),
+    $body-2: mat.define-typography-level(14px, 130%, 500),
     $button: mat.define-typography-level(14px, 100%, 400)
 );
 

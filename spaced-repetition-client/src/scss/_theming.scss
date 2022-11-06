@@ -1,27 +1,25 @@
 @use '@angular/material' as mat;
+@import './color';
 
 // Doc
 // https://material.angular.io/guide/theming
 
-$light-primary: mat.define-palette(mat.$pink-palette);
-$light-accent: mat.define-palette(mat.$pink-palette);
-$angular-warn: mat.define-palette(mat.$red-palette);
+$primary: mat.define-palette($blue-palette, 500);
+$accent: mat.define-palette($orange-palette, 500);
+$warn: mat.define-palette($red-palette, 500);
 $light-theme: mat.define-light-theme((
  color: (
-   primary: $light-primary,
-   accent: $light-accent,
-   warn: $angular-warn,
+   primary: $primary,
+   accent: $accent,
+   warn: $warn,
  )
 ));
 
-$dark-primary: mat.define-palette(mat.$indigo-palette);
-$dark-accent: mat.define-palette(mat.$blue-grey-palette);
-$angular-warn: mat.define-palette(mat.$red-palette);
 $dark-theme: mat.define-dark-theme((
  color: (
-   primary: $dark-primary,
-   accent: $dark-accent,
-   warn: $angular-warn,
+   primary: $primary,
+   accent: $accent,
+   warn: $warn,
  )
 ));
 

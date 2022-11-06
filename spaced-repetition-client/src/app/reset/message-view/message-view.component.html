@@ -1,19 +1,18 @@
-<header id="main-header">
-    <div class="container">
-        <div class="site-branding">
-            <a [routerLink]="['/home']" routerLinkActive="router-link-active" >RepeatAgain</a>
-        </div>
-    </div>
-</header>
-
-<main>
-    <div class="view-container">
-        <div *ngIf="displayView()">
-            Nous avons envoyé un mail à l'adresse suivante
+<main id="authentication-body">
+    <div class="authentication-container mat-typography">
+        <div *ngIf="displayViewEmail()" class="authentication-validate-message">
+            Nous avons envoyé un mail à l'adresse suivante : <br>
+            <span class="view-email">{{ viewEmail }}</span>
         </div>
     
-        <div *ngIf="displayView()">
-            Votre mot de passe a bien été réinitialisé
+        <div *ngIf="displayViewPassword()" class="authentication-validate-message">
+            <p>
+                Votre mot de passe a bien été réinitialisé
+            </p>
+            
+            <div>
+                <button mat-flat-button [routerLink]="['/login']" routerLinkActive="router-link-active"  type="button" class="button-primary" color="primary">Se connecter</button>
+            </div>
         </div>
     </div>
 </main>
