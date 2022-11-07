@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   isThemeDark: boolean = false;
 
-  selectLang:string="fr";
+  selectLang: string = localStorage.getItem('lang') || 'fr';
   TransLang: string[] = [];
 
   constructor(private authenticationService: AuthenticationService, private route: Router, private translate: TranslateService) { 
@@ -23,16 +23,21 @@ export class HeaderComponent implements OnInit {
 
     translate.setDefaultLang('fr');
     translate.addLangs(['en', 'fr']);
-    translate.use('fr');
+    this.setTransLanguage()
   }
 
   ngOnInit(): void {
     this.getTransLanguage();
+
+    // Set dark mode
+    this.isThemeDark = localStorage.getItem('theme') == 'dark' ? false : true;
+    this.setDarkTheme()
   }
 
   // i18n
   setTransLanguage(){
     this.translate.use(this.selectLang);
+    localStorage.setItem('lang', this.selectLang)
   }
 
   getTransLanguage(){
@@ -49,10 +54,12 @@ export class HeaderComponent implements OnInit {
       document.querySelector('body')?.classList.remove('light-theme')
       document.querySelector('body')?.classList.add('dark-theme')
       this.isThemeDark = true
+      localStorage.setItem('theme', 'dark');
     } else {
       document.querySelector('body')?.classList.add('light-theme')
       document.querySelector('body')?.classList.remove('dark-theme')
       this.isThemeDark = false
+      localStorage.setItem('theme', 'light');
     }
   }
 
