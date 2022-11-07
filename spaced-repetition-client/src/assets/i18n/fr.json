@@ -4,14 +4,37 @@
         "logout": "Se déconnecter"
     },
     "form": {
-        "email": "Email",
-        "required": "Ce champs est requis",
-        "password": "Mot de passe",
-        "forgotPassword": "Mot de passe oublié ?",
         "signup": "S'inscrire",
-        "login": "Se connecter"
+        "login": "Se connecter",
+        "createAccount": "Créer un compte",
+        "label": {
+            "email": "Email",
+            "password": "Mot de passe",
+            "username": "Pseudo",
+            "confirmPassword": "Confirmation mot de passe"
+        },
+        "error": {
+            "required": "Ce champs est requis",
+            "error": "Veuillez corriger les erreurs du formulaire",
+            "errorEmailPassword": "L'email ou le mot de passe est incorrect",
+            "minLength4": "Ce champ doit contenir au minimum 4 caractères",
+            "onlyAlpha": "Ce champ doit contenir uniquement des caractères alphabétiques",
+            "passwordRules": "Le mot de passe doit contenir au minimum : 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial",
+            "validEmail": "Ce champs doit être un email valide",
+            "samePassword": "Les mots de passe doivent être identiques"
+        }
     },
     "authentication": {
-        "login": "Se connecter"
+        "title": {
+            "login": "Se connecter",
+            "signup": "S'inscrire",
+            "passwordReset": "Réinitialiser le mot de passe"
+        },
+        "forgotPassword": "Mot de passe oublié ?",
+        "noAccount": "Pas de compte ?",
+        "alreadyAccount": "Déjà un compte ?",
+        "emailResetPassword": "Nous avons envoyé un mail à l'adresse suivante",
+        "passwordReset": "Votre mot de passe a bien été réinitialisé",
+        "passwordResetDescription": "Entrez votre adresse e-mail avec laquelle vous vous êtes inscrit et nous vous enverrons un lien pour réinitialiser votre mot de passe."
     }
 }

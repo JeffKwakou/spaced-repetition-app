@@ -4,14 +4,37 @@
         "logout": "Logout"
     },
     "form": {
-        "email": "Email",
-        "required": "This field is required",
-        "password": "Password",
-        "forgotPassword": "Forgot password ?",
         "signup": "Sign up",
-        "login": "Login"
+        "login": "Login",
+        "createAccount": "Create an account",
+        "label": {
+            "email": "Email",
+            "password": "Password",
+            "username": "Username",
+            "confirmPassword": "Confirm password"
+        },
+        "error": {
+            "required": "This field is required",
+            "error": "Please correct the errors in the form",
+            "errorEmailPassword": "The email or password is incorrect",
+            "minLength4": "This field must contain at least 4 characters",
+            "onlyAlpha": "This field must contain only alphabetical characters",
+            "passwordRules": "The password must contain at least: 1 lower case, 1 upper case, 1 number and 1 special character",
+            "validEmail": "This field must be a valid email",
+            "samePassword": "Passwords must be identical"
+        }
     },
     "authentication": {
-        "login": "Login"
+        "title": {
+            "login": "Login",
+            "signup": "Sign up",
+            "passwordReset": "Reset password"
+        },
+        "forgotPassword": "Forgot password ?",
+        "noAccount": "You haven't an account ?",
+        "alreadyAccount": "Already have an account ?",
+        "emailResetPassword": "We sent an email to the following address",
+        "passwordReset": "Your password has been reset",
+        "passwordResetDescription": "Enter your email address with which you registered and we will send you a link to reset your password."
     }
 }

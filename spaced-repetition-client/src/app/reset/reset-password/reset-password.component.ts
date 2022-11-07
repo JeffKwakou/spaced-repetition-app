@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Translate } from 'src/app/utils/tools/translate.tool';
 
 @Component({
   selector: 'app-reset-password',
@@ -33,18 +34,6 @@ export class ResetPasswordComponent implements OnInit {
   }, {
     validators: this.authenticationService.controlValuesAreEqual(['password'], ['confirmPassword'])
   })
-
-  getPasswordErrorMessage(): string {
-    if (this.resetForm.get(['password'])?.hasError('required')) {
-      return 'Le mot de passe est requis';
-    }
-
-    if (this.resetForm.get(['password'])?.hasError('minlength')) {
-      return 'Le pseudo doit contenir au minimum 6 caractères';
-    }
-
-    return this.resetForm.get(['password'])?.hasError('pattern') ? 'Le pseudo doit contenir au minimum : 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial' : '';
-  }
   
   onSubmitReset() {
     if (!this.resetForm.invalid) {
@@ -61,7 +50,7 @@ export class ResetPasswordComponent implements OnInit {
         this.formErrorMessage = error.error.message;
       })
     } else {
-      this.formErrorMessage = "Veuillez corriger les erreurs du formulaire";
+      this.formErrorMessage = Translate.get('form.error.error');
     }
   }
 }

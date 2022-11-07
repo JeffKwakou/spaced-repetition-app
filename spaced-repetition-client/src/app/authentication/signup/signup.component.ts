@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Translate } from 'src/app/utils/tools/translate.tool';
 
 @Component({
   selector: 'app-signup',
@@ -51,14 +52,13 @@ export class SignupComponent implements OnInit {
         })
       },
       (res: any) => {
-        console.log("ici")
         this.signupFormErrorMessage = res.error.message
         this.snackBar.open(res.error.message, 'OK', {
           duration: 5000
         })
       })
     } else {
-      this.signupFormErrorMessage = "Veuillez corriger les erreurs du formulaire"
+      this.signupFormErrorMessage = Translate.get('form.error.error');
     }
   }
 }

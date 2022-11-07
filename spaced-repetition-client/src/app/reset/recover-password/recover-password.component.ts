@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Translate } from 'src/app/utils/tools/translate.tool';
 
 @Component({
   selector: 'app-recover-password',
@@ -31,7 +32,7 @@ export class RecoverPasswordComponent implements OnInit {
         this.router.navigate(['/forgot/password'], {queryParams: {view: 'emailSended', email: this.recoverForm.value.email}})
       });
     } else {
-      this.formErrorMessage = "Veuillez corriger les erreurs du formulaire";
+      this.formErrorMessage = Translate.get('form.error.error');
     }
   }
 

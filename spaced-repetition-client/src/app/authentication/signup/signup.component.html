@@ -2,7 +2,7 @@
     <div class="authentication-container">
         <div class="authentication-content">
             <div class="mat-typography">
-                <h1>S'inscrire</h1>
+                <h1>{{'authentication.title.signup' | translate}}</h1>
             </div>
 
             <div *ngIf="signupFormErrorMessage" class="form-error__message mat-elevation-z1">
@@ -12,55 +12,55 @@
             <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignupForm()">
                 <div class="form-container">
                     <mat-form-field appearance="fill">
-                        <mat-label>Pseudo</mat-label>
+                        <mat-label>{{'form.label.username' | translate}}</mat-label>
                         <input matInput formControlName="username" required>
-                        <mat-error *ngIf="signupForm.controls.username.hasError('required')">Ce champ est requis</mat-error>
-                        <mat-error *ngIf="signupForm.controls.username.hasError('minlength')">Ce champ doit contenir au minimum 4 caractères</mat-error>
-                        <mat-error *ngIf="signupForm.controls.username.hasError('pattern')">Ce champ doit contenir uniquement des caractères alphabétiques</mat-error>
+                        <mat-error *ngIf="signupForm.controls.username.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                        <mat-error *ngIf="signupForm.controls.username.hasError('minlength')">{{'form.error.minLength4' | translate}}</mat-error>
+                        <mat-error *ngIf="signupForm.controls.username.hasError('pattern')">{{'form.error.onlyAlpha' | translate}}</mat-error>
                     </mat-form-field>
                 </div>
     
                 <div class="form-container">
                     <mat-form-field appearance="fill">
-                        <mat-label>Email</mat-label>
+                        <mat-label>{{'form.label.email' | translate}}</mat-label>
                         <input matInput formControlName="email" required>
-                        <mat-error *ngIf="signupForm.controls.email.hasError('required')">Ce champ est requis</mat-error>
-                        <mat-error *ngIf="signupForm.controls.email.hasError('email')">Ce champs doit être un email valide</mat-error>
+                        <mat-error *ngIf="signupForm.controls.email.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                        <mat-error *ngIf="signupForm.controls.email.hasError('email')">{{'form.error.validEmail' | translate}}</mat-error>
                     </mat-form-field>
                 </div>
     
                 <div formGroupName="passwords">
                     <div class="form-container">
                         <mat-form-field appearance="fill">
-                            <mat-label>Mot de passe</mat-label>
+                            <mat-label>{{'form.label.password' | translate}}</mat-label>
                             <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
                             <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
                               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('required')">Ce champ est requis</mat-error>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('minlength')">Ce champs doit contenir au minimum 4 caractères</mat-error>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('pattern')">Le pseudo doit contenir au minimum : 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial</mat-error>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('minlength')">{{'form.error.minLength4' | translate}}</mat-error>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('pattern')">{{'form.error.passwordRules' | translate}}</mat-error>
                         </mat-form-field>
                     </div>
         
                     <div class="form-container">
                         <mat-form-field appearance="fill">
-                            <mat-label>Confirmation mot de passe</mat-label>
+                            <mat-label>{{'form.label.confirmPassword' | translate}}</mat-label>
                             <input matInput formControlName="confirmPassword" [type]="hideConfirmPassword ? 'password' : 'text'">
                             <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
                               <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.confirmPassword.hasError('required')">Ce champ est requis</mat-error>
-                            <mat-error *ngIf="signupForm.errors?.['valuesDoNotMatch']">Les mots de passe doivent être identiques</mat-error>
+                            <mat-error *ngIf="signupForm.controls.passwords.controls.confirmPassword.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                            <mat-error *ngIf="signupForm.errors?.['valuesDoNotMatch']">{{'form.error.samePassword' | translate}}</mat-error>
                         </mat-form-field>
                     </div>
                 </div> 
     
-                <button mat-flat-button type="submit" class="button-primary btn-large btn-auth" color="primary">Créer un compte</button>
+                <button mat-flat-button type="submit" class="button-primary btn-large btn-auth" color="primary">{{'form.createAccount' | translate}}</button>
             </form>
     
             <div class="authentication-links">
-                Déjà un compte ? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Se connecter</a>
+                {{'authentication.alreadyAccount' | translate}} <a [routerLink]="['/login']" routerLinkActive="router-link-active" >{{'form.login' | translate}}</a>
             </div>
         </div>
         

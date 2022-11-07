@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Translate } from 'src/app/utils/tools/translate.tool';
 
 @Component({
   selector: 'app-login',
@@ -37,17 +38,15 @@ export class LoginComponent implements OnInit {
         'password': this.loginForm.value.password
       }
 
-      // this.authenticationService.login(formFields);
-
       this.apiService.login(formFields).subscribe((res: any) => {
         this.authenticationService.login(res.body)
         this.router.navigate(['folders'])
       },
       (error: any) => {
-        this.loginFormErrorMessage = "L'email ou le mot de passe sont incorrects";
+        this.loginFormErrorMessage = Translate.get('form.error.errorEmailPassword');
       });
     } else {
-      this.loginFormErrorMessage = "Veuillez corriger les erreurs du formulaire";
+      this.loginFormErrorMessage = Translate.get('form.error.error');
     }
   }
 
