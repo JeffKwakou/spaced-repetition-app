@@ -7,11 +7,6 @@
     
             <div>
                 <nav>
-                    <div *ngIf="isAuthenticated">
-                        <button mat-button>
-                            <mat-icon matBadge="0" matBadgeColor="warn">notifications</mat-icon>
-                        </button>
-                    </div>
                     <div>
                         <form class="form-group">
                             <select class="form-control" [(ngModel)]="selectLang" name="selectLang" (change)="setTransLanguage()">
@@ -25,12 +20,17 @@
                         </button>
                     </div>
                     <div *ngIf="isAuthenticated">
+                        <button mat-button>
+                            <mat-icon matBadge="0" matBadgeColor="warn">notifications</mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="isAuthenticated">
                         <button mat-button [matMenuTriggerFor]="accountUser">
                             <mat-icon>account_circle</mat-icon>
                         </button>
                         <mat-menu #accountUser="matMenu">
-                            <button mat-menu-item><mat-icon>{{'header.settings' | translate}}</mat-icon>Paramètres</button>
-                            <button mat-menu-item (click)="onLogout()"><mat-icon>{{'header.logout' | translate}}</mat-icon>Se déconnecter</button>
+                            <button mat-menu-item><mat-icon>settings</mat-icon>{{'header.settings' | translate}}</button>
+                            <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>{{'header.logout' | translate}}</button>
                         </mat-menu>
                     </div>
                 </nav>

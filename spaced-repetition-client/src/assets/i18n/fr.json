@@ -11,7 +11,11 @@
             "email": "Email",
             "password": "Mot de passe",
             "username": "Pseudo",
-            "confirmPassword": "Confirmation mot de passe"
+            "confirmPassword": "Confirmation mot de passe",
+            "search": "Rechercher",
+            "title": "Titre",
+            "category": "Catégorie",
+            "repetitionType": "Type de révision"
         },
         "error": {
             "required": "Ce champs est requis",
@@ -36,5 +40,28 @@
         "emailResetPassword": "Nous avons envoyé un mail à l'adresse suivante",
         "passwordReset": "Votre mot de passe a bien été réinitialisé",
         "passwordResetDescription": "Entrez votre adresse e-mail avec laquelle vous vous êtes inscrit et nous vous enverrons un lien pour réinitialiser votre mot de passe."
+    },
+    "app": {
+        "folder": {
+            "myFolders": "Mes dossiers",
+            "category": "Catégorie",
+            "filterFolders": "Filtrer les dossiers",
+            "addNewFolder": "Ajouter un nouveau dossier",
+            "updateFolder": "Modifier le dossier"
+        },
+        "option": {
+            "update": "Modifier",
+            "delete": "Supprimer",
+            "default": "Défaut",
+            "fromAToZ": "De A à Z",
+            "categories": "Catégories",
+            "lastAdded": "Dernier ajout",
+            "standard": "Standard",
+            "quiz": "Quiz"
+        },
+        "button": {
+            "add": "Ajouter",
+            "update": "Modifier"
+        }
     }
 }

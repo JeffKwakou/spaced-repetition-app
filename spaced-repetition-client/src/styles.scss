@@ -15,10 +15,20 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+main#authenticated-body {
+    position: relative;
+    top: 4.25em;
+    padding-top: 40px;
+}
+
 // Image
 img {
     width: 100%;
     height: auto;
+}
+
+.svg-primary {
+    fill: $blue;
 }
 /* #endregion */
 
@@ -167,5 +177,20 @@ main#authentication-body {
     padding: 10px 20px;
     border-left: 3px solid $red;
     border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.header-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h1 {
+        margin: 0 !important;
+    }
+}
+
+.filters-container {
     margin-bottom: 20px;
 }

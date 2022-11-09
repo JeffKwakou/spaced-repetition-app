@@ -11,7 +11,11 @@
             "email": "Email",
             "password": "Password",
             "username": "Username",
-            "confirmPassword": "Confirm password"
+            "confirmPassword": "Confirm password",
+            "search": "Search",
+            "title": "Title",
+            "category": "Category",
+            "repetitionType": "Type of repetition"
         },
         "error": {
             "required": "This field is required",
@@ -36,5 +40,28 @@
         "emailResetPassword": "We sent an email to the following address",
         "passwordReset": "Your password has been reset",
         "passwordResetDescription": "Enter your email address with which you registered and we will send you a link to reset your password."
+    },
+    "app": {
+        "folder": {
+            "myFolders": "My folders",
+            "category": "Category",
+            "filterFolders": "Filter folders",
+            "addNewFolder": "Add new folder",
+            "updateFolder": "Update folder"
+        },
+        "option": {
+            "update": "Update",
+            "delete": "Delete",
+            "default": "Default",
+            "fromAToZ": "From A to Z",
+            "categories": "Categories",
+            "lastAdded": "Last added",
+            "standard": "Standard",
+            "quiz": "Quiz"
+        },
+        "button": {
+            "add": "Add",
+            "update": "Update"
+        }
     }
 }
