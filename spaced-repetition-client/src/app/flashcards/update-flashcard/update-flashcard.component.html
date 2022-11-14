@@ -1,30 +1,30 @@
 <div>
-    <h2>Modifier une carte</h2>
+    <h2>{{'app.flashcard.updateCard' | translate}}</h2>
 
     <form [formGroup]="updateFlashcardForm" (ngSubmit)="onSubmitUpdateFlashcard()">
         <div class="form-container">
             <mat-form-field appearance="fill">
-                <mat-label>Question</mat-label>
+                <mat-label>{{'form.label.question' | translate}}</mat-label>
                 <input matInput formControlName="front" required>
-                <mat-error *ngIf="updateFlashcardForm.controls.front.invalid">Ce champs est requis</mat-error>
+                <mat-error *ngIf="updateFlashcardForm.controls.front.invalid">{{'form.error.required' | translate}}</mat-error>
             </mat-form-field>
         </div>
 
         <div class="form-container">
             <mat-form-field appearance="fill">
-                <mat-label>Réponse</mat-label>
+                <mat-label>{{'form.label.answer' | translate}}</mat-label>
                 <input matInput formControlName="back" required>
-                <mat-error *ngIf="updateFlashcardForm.controls.back.invalid">Ce champs est requis</mat-error>
+                <mat-error *ngIf="updateFlashcardForm.controls.back.invalid">{{'form.error.required' | translate}}</mat-error>
             </mat-form-field>
         </div>
 
         <div class="form-container">
             <mat-form-field appearance="fill">
-                <mat-label>Informations supplémentaires</mat-label>
+                <mat-label>{{'form.label.additionalNote' | translate}}</mat-label>
                 <textarea matInput formControlName="note" ></textarea>
               </mat-form-field>
         </div>
 
-        <button type="submit" mat-button color="primary">Modifier <mat-icon>autorenew</mat-icon></button>
+        <button type="submit" mat-button color="primary"><mat-icon>autorenew</mat-icon>{{'app.button.update' | translate}}</button>
     </form>
 </div>

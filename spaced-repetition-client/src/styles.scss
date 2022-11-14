@@ -2,7 +2,7 @@
 
 // Angular material element
 .basic-card {
-    margin: 20px 0
+    margin: 10px 0
 }
 
 /* #region GENERAL */
@@ -193,4 +193,16 @@ main#authentication-body {
 
 .filters-container {
     margin-bottom: 20px;
+}
+
+.launch-revision-container {
+    margin-bottom: 10px;
+}
+
+.flashcard-card {
+    border-bottom: 4px solid $green;
+}
+
+.flashcard-card_prior {
+    border-bottom: 4px solid $red;
 }

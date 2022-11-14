@@ -1,7 +1,7 @@
-<main>
+<main id="authenticated-body" class="mat-typography">
     <div class="container">
-        <div class="header-screen">
-            <h2><button mat-button [routerLink]="['/folders']" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button> Mes dossiers</h2>
+        <div class="header-view">
+            <h1><button mat-button [routerLink]="['/folders']" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button>{{'app.flashcard.myCards' | translate}}</h1>
 
             <div>
                 <button mat-mini-fab color="primary" aria-label="Bouton pour ajouter un nouveau dossier" (click)="openDialogAddFlashcard()">
@@ -10,58 +10,62 @@
             </div>
         </div>
 
-        <div class="filter-flashcard-container">
+        <div class="filters-container">
             <form>
                 <div class="form-container">
                     <mat-form-field appearance="fill">
-                        <mat-label>Rechercher</mat-label>
+                        <mat-label>{{'form.label.search' | translate}}</mat-label>
                         <input matInput type="text" name="search" [(ngModel)]="searchingFlashcard" (ngModelChange)="searchFlashcardByKeyword()">
                     </mat-form-field>
                 </div>
             </form>
 
+            <div class="launch-revision-container">
+                <!-- <button mat-flat-button color="accent" class="button-primary btn-large" [routerLink]="['/revision', folderId]" routerLinkActive="router-link-active" >
+                    {{'app.flashcard.launchRepetition' | translate}}
+                </button> -->
+                <button mat-flat-button color="accent" class="button-primary btn-large" (click)="launchNewRevision()" >
+                    {{'app.flashcard.launchRepetition' | translate}}
+                </button>
+            </div>
+
             <div>
-                <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">
-                    Filtrer les cartes
+                <button mat-flat-button color="primary" class="button-primary" [matMenuTriggerFor]="menu">
+                    {{'app.flashcard.filterCards' | translate}}
                 </button>
                 <mat-menu #menu="matMenu">
-                    <div>Trier les cartes par</div>
                     <button mat-menu-item (click)="onFilterFlashcards('default')">
-                        Défaut
+                        {{'app.option.default' | translate}}
                         <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.default">done</mat-icon>
                     </button>
                     <button mat-menu-item (click)="onFilterFlashcards('front')">
-                        Recto
+                        {{'app.option.recto' | translate}}
                         <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.front">done</mat-icon>
                     </button>
                     <button mat-menu-item (click)="onFilterFlashcards('back')">
-                        Verso
+                        {{'app.option.verso' | translate}}
                         <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.back">done</mat-icon>
                     </button>
                     <button mat-menu-item (click)="onFilterFlashcards('revisiondate')">
-                        Date de révision
+                        {{'app.option.repetitionDate' | translate}}
                         <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.revisiondate">done</mat-icon>
                     </button>
                     <button mat-menu-item (click)="onFilterFlashcards('lastadd')">
-                        Dernier ajout
+                        {{'app.option.lastAdded' | translate}}
                         <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.lastadd">done</mat-icon>
                     </button>
                 </mat-menu>
             </div>
 
-            <div>
-                <button mat-flat-button color="accent" [routerLink]="['/revision', folderId]" routerLinkActive="router-link-active" >
-                    Lancer une révision
-                </button>
-            </div>
+            
         </div>
 
         <div class="row">
             <div class="col-lg-4" *ngFor="let flashcard of flashcards">
-                <mat-card class="mat-elevation-z3 flashcard-card" [ngClass]="{'flashcard-card_prior': !checkDateFolder(flashcard.date_revision)}">
+                <mat-card class="mat-elevation-z3 basic-card" [ngClass]="{'flashcard-card_prior': !checkDateFolder(flashcard.date_revision)}">
                     <mat-card-title>{{ flashcard.front }}</mat-card-title>
                     <mat-card-title>{{ flashcard.back }}</mat-card-title>
-                    <mat-card-subtitle>Prochaine révision le {{ flashcard.date_revision | date: 'dd MMMM YYYY' }}</mat-card-subtitle>
+                    <mat-card-subtitle>{{'app.flashcard.nextRepetition' | translate}} {{ flashcard.date_revision | date: 'dd/M/YYYY' }}</mat-card-subtitle>
 
                     <div class="flashcard-card__option">
                         <button mat-button [matMenuTriggerFor]="flashcardOption">
@@ -69,10 +73,10 @@
                         </button>
                         <mat-menu #flashcardOption="matMenu">
                             <button mat-menu-item (click)="openDialogUpdateFlashcard(flashcard._id)">
-                                Modifier
+                                {{'app.option.update' | translate}}
                             </button>
                             <button mat-menu-item (click)="deleteFlashcard(flashcard._id)">
-                                Supprimer
+                                {{'app.option.delete' | translate}}
                             </button>
                         </mat-menu>
                     </div>

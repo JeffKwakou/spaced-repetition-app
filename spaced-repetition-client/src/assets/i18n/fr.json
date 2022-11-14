@@ -7,6 +7,7 @@
         "signup": "S'inscrire",
         "login": "Se connecter",
         "createAccount": "Créer un compte",
+        "selectRevision" : "Sélectionner le type de révision",
         "label": {
             "email": "Email",
             "password": "Mot de passe",
@@ -15,7 +16,10 @@
             "search": "Rechercher",
             "title": "Titre",
             "category": "Catégorie",
-            "repetitionType": "Type de révision"
+            "repetitionType": "Type de révision",
+            "question": "Question",
+            "answer": "Réponse",
+            "additionalNote": "Informations supplémentaires"
         },
         "error": {
             "required": "Ce champs est requis",
@@ -49,6 +53,14 @@
             "addNewFolder": "Ajouter un nouveau dossier",
             "updateFolder": "Modifier le dossier"
         },
+        "flashcard": {
+            "myCards": "Mes cartes",
+            "launchRepetition": "Lancer une révision",
+            "filterCards": "Filtrer les cartes",
+            "nextRepetition": "Prochaine révision le",
+            "addNewCard": "Ajouter une nouvelle carte",
+            "updateCard": "Modifer la carte"
+        },
         "option": {
             "update": "Modifier",
             "delete": "Supprimer",
@@ -57,11 +69,17 @@
             "categories": "Catégories",
             "lastAdded": "Dernier ajout",
             "standard": "Standard",
-            "quiz": "Quiz"
+            "quiz": "Quiz",
+            "qcm": "Choix multiple",
+            "association": "Associé",
+            "recto": "Recto",
+            "verso": "Verso",
+            "repetitionDate": "Date de révision"
         },
         "button": {
             "add": "Ajouter",
-            "update": "Modifier"
+            "update": "Modifier",
+            "launchRevision": "Lancer la révision"
         }
     }
 }

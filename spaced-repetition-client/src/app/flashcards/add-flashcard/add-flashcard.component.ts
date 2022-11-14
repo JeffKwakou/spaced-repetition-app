@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
+import { FlashcardListComponent } from '../flashcard-list/flashcard-list.component';
 
 @Component({
   selector: 'app-add-flashcard',
@@ -10,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AddFlashcardComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: {folderId: string}, private apiService: ApiService) { }
+  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: {folderId: string}, private apiService: ApiService, public dialogRef: MatDialogRef<FlashcardListComponent>) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +31,8 @@ export class AddFlashcardComponent implements OnInit {
       }
 
       this.apiService.addFlashcard(this.data.folderId, newFlashcard).subscribe((res:any) => {
-        console.log(res)
+        this.addFlashcardForm.reset()
+        this.dialogRef.close();
       })
     }
   }

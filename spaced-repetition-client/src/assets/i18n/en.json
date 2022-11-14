@@ -7,6 +7,7 @@
         "signup": "Sign up",
         "login": "Login",
         "createAccount": "Create an account",
+        "selectRevision" : "Select the type of revision",
         "label": {
             "email": "Email",
             "password": "Password",
@@ -15,7 +16,10 @@
             "search": "Search",
             "title": "Title",
             "category": "Category",
-            "repetitionType": "Type of repetition"
+            "repetitionType": "Type of repetition",
+            "question": "Question",
+            "answer": "Answer",
+            "additionalNote": "Additional Notes"
         },
         "error": {
             "required": "This field is required",
@@ -49,6 +53,14 @@
             "addNewFolder": "Add new folder",
             "updateFolder": "Update folder"
         },
+        "flashcard": {
+            "myCards": "My cards",
+            "launchRepetition": "Start a revision",
+            "filterCards": "Filter cards",
+            "nextRepetition": "Next revision on",
+            "addNewCard": "Add new card",
+            "updateCard": "Update card"
+        },
         "option": {
             "update": "Update",
             "delete": "Delete",
@@ -57,11 +69,17 @@
             "categories": "Categories",
             "lastAdded": "Last added",
             "standard": "Standard",
-            "quiz": "Quiz"
+            "quiz": "Quiz",
+            "qcm": "Multiple choice",
+            "association": "Associate",
+            "recto": "Recto",
+            "verso": "Verso",
+            "repetitionDate": "Date of revision"
         },
         "button": {
             "add": "Add",
-            "update": "Update"
+            "update": "Update",
+            "launchRevision": "Launch the revision"
         }
     }
 }

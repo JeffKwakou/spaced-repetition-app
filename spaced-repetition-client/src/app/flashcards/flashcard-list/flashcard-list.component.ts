@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Flashcard } from 'src/app/models/Flashcard';
 import { ApiService } from 'src/app/services/api.service';
+import { DialogRevisonView } from 'src/app/utils/views/dialog-revison-view/dialog-revison-view.component';
 import { AddFlashcardComponent } from '../add-flashcard/add-flashcard.component';
 import { UpdateFlashcardComponent } from '../update-flashcard/update-flashcard.component';
 
@@ -40,6 +41,13 @@ export class FlashcardListComponent implements OnInit {
     this.getFlashcards()
   }
 
+  launchNewRevision(): void {
+    this.dialog.open(DialogRevisonView, {
+      width: '400px',
+      data: { folderId: this.folderId },
+    });
+  }
+
   getFlashcards(): void {
     this.apiService.getAllFlashcards(this.folderId).subscribe((res: any) => {
       this.flashcards = res.body
@@ -53,7 +61,7 @@ export class FlashcardListComponent implements OnInit {
       data: { folderId: this.folderId },
     });
 
-    // dialogRef.afterClosed().subscribe(() => this.getFolders());
+    dialogRef.afterClosed().subscribe(() => this.getFlashcards());
   }
 
   openDialogUpdateFlashcard(flashcardId: string) {

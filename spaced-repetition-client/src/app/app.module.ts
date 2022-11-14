@@ -66,6 +66,9 @@ import { MessageViewComponent } from './reset/message-view/message-view.componen
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { setAppInjector } from './app.injector';
+import { RevisionStandardComponent } from './revision/revision-standard/revision-standard.component';
+import { RevisionQuizComponent } from './revision/revision-quiz/revision-quiz.component';
+import { DialogRevisonView } from './utils/views/dialog-revison-view/dialog-revison-view.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -86,7 +89,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddFlashcardComponent,
     UpdateFlashcardComponent,
     SessionComponent,
-    MessageViewComponent
+    MessageViewComponent,
+    RevisionStandardComponent,
+    RevisionQuizComponent,
+    DialogRevisonView
   ],
   imports: [
     BrowserModule,

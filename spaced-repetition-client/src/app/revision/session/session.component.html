@@ -1,67 +1,12 @@
-<app-header></app-header>
-
-<main>
+<main id="authenticated-body" class="mat-typography">
     <div class="container">
-        <div class="header-screen">
-            <h2><button mat-button [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button> Session de révision</h2>
+        <div class="header-view">
+            <h1><button mat-button [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button> Session de révision</h1>
         </div>
 
-        <div class="standard-repetition" *ngIf="typeRepetitionStandard()">
-            <div>
-                <div>
-                    {{ currentFlashcard.front }}
-                </div>
-                <div>
-                    {{ currentFlashcard.back }}
-                </div>
-            </div>
-    
-            <div *ngIf="repetitionIsOver()">
-                Aucune carte à réviser
-            </div>
-    
-            <div class="repetition-choice">
-                <p>Quelle est la qualité de mémorisation de la carte ?</p>
-                <div>
-                    <button mat-flat-button color="primary" (click)="responseRepetition(1)">Pas du tout</button>
-                    <button mat-flat-button color="primary" (click)="responseRepetition(2)">Difficile</button>
-                    <button mat-flat-button color="primary" (click)="responseRepetition(3)">Moyen</button>
-                    <button mat-flat-button color="primary" (click)="responseRepetition(4)">Correct</button>
-                    <button mat-flat-button color="primary" (click)="responseRepetition(5)">Facile</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="standard-repetition" *ngIf="typeRepetitionQuiz()">
-            <div *ngIf="!repetitionIsOver()">
-                <div>
-                    {{ currentFlashcard.front }}
-                </div>
-                <div>
-                    Tape la bonne réponse
-                </div>
-            </div>
-    
-            <div *ngIf="repetitionIsOver()">
-                Aucune carte à réviser
-            </div>
-    
-            <div *ngIf="!repetitionIsOver()">
-                <div>
-                    Nombre d'essai : {{ quizAttempt }}
-                </div>
-                <form [formGroup]="quizForm" (ngSubmit)="onSubmitResponseQuiz()">
-                    <div class="form-container">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Réponse</mat-label>
-                            <input matInput formControlName="response">
-                        </mat-form-field>
-                    </div>
-            
-                    <button type="submit" mat-button color="primary">Envoyer <mat-icon>send</mat-icon></button>
-                </form>
-            </div>
-        </div>
-        
+        <ng-container>
+            <app-revision-standard *ngIf="revisionType == revisionEnum.standard"></app-revision-standard>
+            <app-revision-quiz *ngIf="revisionType == revisionEnum.quiz"></app-revision-quiz>
+        </ng-container>
     </div>
 </main>

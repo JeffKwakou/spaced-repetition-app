@@ -31,7 +31,6 @@ export class AddFolderComponent implements OnInit {
       }
 
       this.apiService.addFolder(newFolder).subscribe((res: any) => {
-        console.log(res)
         this.addFolderForm.reset()
         this.dialogRef.close();
       })
