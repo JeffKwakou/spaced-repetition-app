@@ -1,14 +1,14 @@
 <div class="mat-typography">
     <h3>{{'form.selectRevision' | translate}}</h3>
-    
-    <form [formGroup]="dialogRevisionForm" (ngSubmit)="launchRevision()">
+
+    <form [formGroup]="dialogRevisionForm" (ngSubmit)="launchRevision()" *ngIf="isLoading">
         <div class="form-container">
             <mat-form-field appearance="fill">
                 <mat-label>{{'form.label.repetitionType' | translate}}</mat-label>
                 <mat-select formControlName="options">
                   <mat-option value="{{ revisionType.standard }}">{{'app.option.standard' | translate}}</mat-option>
                   <mat-option value="{{ revisionType.quiz }}">{{'app.option.quiz' | translate}}</mat-option>
-                  <mat-option value="{{ revisionType.qcm }}">{{'app.option.qcm' | translate}}</mat-option>
+                  <mat-option value="{{ revisionType.qcm }}" *ngIf="flashcards.length >= 4">{{'app.option.qcm' | translate}}</mat-option>
                   <mat-option value="{{ revisionType.association }}">{{'app.option.association' | translate}}</mat-option>
                 </mat-select>
             </mat-form-field>

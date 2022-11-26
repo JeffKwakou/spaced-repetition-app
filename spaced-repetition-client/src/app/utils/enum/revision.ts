@@ -1,6 +1,6 @@
 export enum REVISION_TYPE {
-    standard = "STANDARD",
-    quiz = "QUIZ",
-    qcm = "QCM",
-    association = "ASSOCIATION"
+    standard = "standard",
+    quiz = "quiz",
+    qcm = "qcm",
+    association = "associe"
 }

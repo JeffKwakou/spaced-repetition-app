@@ -1,12 +1,11 @@
 <main id="authenticated-body" class="mat-typography">
     <div class="container">
         <div class="header-view">
-            <h1><button mat-button [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button> Session de révision</h1>
+            <h1><button mat-button [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button> {{'app.revision.sessionRevision' | translate}}</h1>
         </div>
 
-        <ng-container>
-            <app-revision-standard *ngIf="revisionType == revisionEnum.standard"></app-revision-standard>
-            <app-revision-quiz *ngIf="revisionType == revisionEnum.quiz"></app-revision-quiz>
-        </ng-container>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </main>

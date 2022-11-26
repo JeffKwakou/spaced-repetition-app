@@ -52,15 +52,15 @@ const routes: Routes = [
   },
   // Revision
   {
-    path: 'revision/:folderid',
-    component: SessionComponent,
+    path: 'revision',
+    loadChildren: () => import('./revision/revision.module').then((m) => m.RevisionModule),
     canActivate: [AuthGuard]
   },
   // Default routes
   {
     path: '**',
-    redirectTo:'login', 
-    pathMatch: 'full' 
+    redirectTo:'login',
+    pathMatch: 'full'
   }
 ];
 

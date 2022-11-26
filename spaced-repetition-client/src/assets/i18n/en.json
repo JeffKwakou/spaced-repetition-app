@@ -80,6 +80,17 @@
             "add": "Add",
             "update": "Update",
             "launchRevision": "Launch the revision"
+        },
+        "revision": {
+            "sessionRevision": "Session of revision",
+            "endOfRevision": "End of revision",
+            "standard": {
+                "veryGood": "Very good",
+                "good": "Good",
+                "average": "Average",
+                "notVery": "Not very",
+                "notAtAll": "Not at all"
+            }
         }
     }
 }

@@ -5,18 +5,16 @@
         </mat-card>
 
         <div *ngIf="!endOfRevision">
-            <div>
-                {{ attempt }}
-            </div>
             <form [formGroup]="quizForm" (ngSubmit)="checkResponse()">
                 <div class="form-container">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Réponse</mat-label>
-                        <input matInput formControlName="response" required>
-                    </mat-form-field>
+                    <mat-radio-group formControlName="response">
+                        <div *ngFor="let card of shuffledDeck">
+                            <mat-radio-button value="{{ card.back }}">{{ card.back }}</mat-radio-button>
+                        </div>
+                    </mat-radio-group>
                 </div>
 
-                <button type="submit" mat-flat-button color="accent" class="button-primary" [disabled]="quizForm.invalid"><mat-icon>send</mat-icon></button>
+                <button type="submit" mat-flat-button color="accent" class="button-primary" [disabled]="quizForm.invalid">Valider la réponse</button>
             </form>
         </div>
     </div>

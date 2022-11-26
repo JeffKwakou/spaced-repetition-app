@@ -1,0 +1,45 @@
+.revision-card {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    perspective: 1900px;
+
+    .revision-card-content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+
+        .card-front, .card-back {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            backface-visibility: hidden;
+            font-weight: 700;
+            font-size: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-back {
+            transform: rotateY( 180deg );
+        }
+    }
+
+    &.active .revision-card-content {
+        transform: rotateY(180deg);
+        transition: transform 0.5s;
+    }
+}
+
+.revision-response {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    button {
+        margin: 5px 5px;
+    }
+}

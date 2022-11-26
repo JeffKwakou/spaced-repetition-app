@@ -21,9 +21,6 @@
             </form>
 
             <div class="launch-revision-container">
-                <!-- <button mat-flat-button color="accent" class="button-primary btn-large" [routerLink]="['/revision', folderId]" routerLinkActive="router-link-active" >
-                    {{'app.flashcard.launchRepetition' | translate}}
-                </button> -->
                 <button mat-flat-button color="accent" class="button-primary btn-large" (click)="launchNewRevision()" >
                     {{'app.flashcard.launchRepetition' | translate}}
                 </button>
@@ -57,12 +54,12 @@
                 </mat-menu>
             </div>
 
-            
+
         </div>
 
         <div class="row">
             <div class="col-lg-4" *ngFor="let flashcard of flashcards">
-                <mat-card class="mat-elevation-z3 basic-card" [ngClass]="{'flashcard-card_prior': !checkDateFolder(flashcard.date_revision)}">
+                <mat-card class="mat-elevation-z3 basic-card" [ngClass]="[!checkDateFolder(flashcard.date_revision) ? 'flashcard-card_prior' : 'flashcard-card_good']">
                     <mat-card-title>{{ flashcard.front }}</mat-card-title>
                     <mat-card-title>{{ flashcard.back }}</mat-card-title>
                     <mat-card-subtitle>{{'app.flashcard.nextRepetition' | translate}} {{ flashcard.date_revision | date: 'dd/M/YYYY' }}</mat-card-subtitle>

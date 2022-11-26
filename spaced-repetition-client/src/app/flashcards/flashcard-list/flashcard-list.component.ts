@@ -28,12 +28,12 @@ export class FlashcardListComponent implements OnInit {
   allFlashcards: Flashcard[];
 
   currentDate: Date = new Date();
-  
+
   searchingFlashcard: string;
 
   filterFlashcardValue = FilterFlashcardValue
   filterFlashcardBy = FilterFlashcardValue.default
-  
+
   constructor(private dialog: MatDialog, private apiService: ApiService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -76,17 +76,18 @@ export class FlashcardListComponent implements OnInit {
   checkDateFolder(elementDate: Date): boolean {
     let folderDate = new Date(elementDate)
     if (this.currentDate.getFullYear() > folderDate.getFullYear()) {
-      return false
+      return false;
     } else if (this.currentDate.getMonth() > folderDate.getMonth() && this.currentDate.getFullYear() == folderDate.getFullYear()) {
-      return false
+      return false;
     } else if (this.currentDate.getDate() > folderDate.getDate() && this.currentDate.getMonth() == folderDate.getMonth() && this.currentDate.getFullYear() == folderDate.getFullYear()) {
-      return false
+      return false;
+    } else if (this.currentDate.getFullYear() == folderDate.getFullYear() && this.currentDate.getMonth() == folderDate.getMonth() && this.currentDate.getDate() == folderDate.getDate()) {
+      return false;
     }
     return true
   }
-  
+
   searchFlashcardByKeyword() {
-    console.log("on est la frere")
     this.flashcards = this.allFlashcards.filter((flashcard) => { return flashcard.front.toLowerCase().indexOf(this.searchingFlashcard.toLowerCase()) != -1 || flashcard.back.toLowerCase().indexOf(this.searchingFlashcard.toLowerCase()) != -1 });
   }
 
@@ -132,8 +133,7 @@ export class FlashcardListComponent implements OnInit {
 
   deleteFlashcard(flashcardId: string) {
     this.apiService.deleteFlashcard(flashcardId).subscribe((res: any) => {
-      console.log(res)
-      this.getFlashcards()
+      this.getFlashcards();
     })
   }
 

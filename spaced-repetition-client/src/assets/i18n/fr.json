@@ -80,6 +80,17 @@
             "add": "Ajouter",
             "update": "Modifier",
             "launchRevision": "Lancer la révision"
+        },
+        "revision": {
+            "sessionRevision": "Session de révision",
+            "endOfRevision": "Fin de la révision",
+            "standard": {
+                "veryGood": "Très bien",
+                "good": "Bien",
+                "average": "Moyen",
+                "notVery": "Peu",
+                "notAtAll": "Pas du tout"
+            }
         }
     }
 }
