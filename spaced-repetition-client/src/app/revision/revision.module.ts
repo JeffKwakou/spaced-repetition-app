@@ -5,7 +5,9 @@ import { RevisionRoutingModule } from './revision-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
     CommonModule,
     RevisionRoutingModule

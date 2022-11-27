@@ -1,7 +1,7 @@
 <main id="authenticated-body" class="mat-typography">
     <div class="container">
         <div class="header-view">
-            <h1><button mat-button [routerLink]="['/folders']" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button>{{'app.flashcard.myCards' | translate}}</h1>
+            <h1 class="mat-display-4"><button mat-button [routerLink]="['/folders']" routerLinkActive="router-link-active"><mat-icon>arrow_back_ios</mat-icon></button>{{'app.flashcard.myCards' | translate}}</h1>
 
             <div>
                 <button mat-mini-fab color="primary" aria-label="Bouton pour ajouter un nouveau dossier" (click)="openDialogAddFlashcard()">
@@ -59,9 +59,12 @@
 
         <div class="row">
             <div class="col-lg-4" *ngFor="let flashcard of flashcards">
-                <mat-card class="mat-elevation-z3 basic-card" [ngClass]="[!checkDateFolder(flashcard.date_revision) ? 'flashcard-card_prior' : 'flashcard-card_good']">
-                    <mat-card-title>{{ flashcard.front }}</mat-card-title>
-                    <mat-card-title>{{ flashcard.back }}</mat-card-title>
+                <mat-card class="mat-elevation-z3 basic-card flashcard-card" [ngClass]="[!checkDateFolder(flashcard.date_revision) ? 'flashcard_prior' : 'flashcard_good']">
+                    <div class="card-title-container">
+                        <mat-card-title><div class="recto mat-small">Recto</div> {{ flashcard.front }}</mat-card-title>
+                        <mat-card-title><div class="verso mat-small">Verso</div> {{ flashcard.back }}</mat-card-title>
+                    </div>
+
                     <mat-card-subtitle>{{'app.flashcard.nextRepetition' | translate}} {{ flashcard.date_revision | date: 'dd/M/YYYY' }}</mat-card-subtitle>
 
                     <div class="flashcard-card__option">

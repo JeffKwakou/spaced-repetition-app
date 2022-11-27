@@ -1,0 +1,21 @@
+button.mat-primary, button.mat-accent {
+    &:hover {
+        box-shadow: 0 7px 14px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 8%);
+        filter: brightness(110%);
+    }
+}
+
+.mat-flat-button.button-primary {
+    line-height: 45px;
+    padding: 0px 32px;
+    border-radius: 50px;
+}
+
+.mat-flat-button.btn-large {
+    width: 100%;
+}
+
+.mat-flat-button.btn-auth {
+    text-transform: uppercase;
+    font-weight: 400;
+}

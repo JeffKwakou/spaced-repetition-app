@@ -21,10 +21,6 @@ const routes: Routes = [
       {
         path: 'qcm',
         component: RevisionQcmComponent
-      },
-      {
-        path: 'associe',
-        component: RevisionStandardComponent
       }
     ]
   }

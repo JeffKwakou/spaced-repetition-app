@@ -1,0 +1,34 @@
+// Forms
+mat-form-field {
+    width: 100%;
+}
+
+.form-error__message {
+    color: $red;
+    text-align: left;
+    padding: 10px 20px;
+    border-left: 3px solid $red;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+// Inputs
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 50px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    border: 1px solid transparent !important;
+}
+
+.mat-focused .mat-form-field-flex {
+    border: 1px solid $blue !important;
+    box-shadow: 0 7px 14px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 8%);
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 15px;
+}

@@ -1,17 +1,12 @@
 @import './scss/index';
 
-// Angular material element
-.basic-card {
-    margin: 10px 0
-}
-
 /* #region GENERAL */
-html, body { 
-    height: 100%; 
+html, body {
+    height: 100%;
 }
 
-body { 
-    margin: 0; 
+body {
+    margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -74,62 +69,6 @@ img {
 }
 /* #endregion */
 
-
-/**
-* ------------------------------------------------
-* BUTTONS
-* ------------------------------------------------
-*/
-.mat-flat-button.button-primary {
-    line-height: 45px;
-    padding: 0px 32px;
-    border-radius: 50px;
-
-    &:hover {
-        box-shadow: 0 7px 14px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 8%);
-        filter: brightness(130%);
-    }
-}
-
-.mat-flat-button.btn-large {
-    width: 100%;
-}
-
-.mat-flat-button.btn-auth {
-    text-transform: uppercase;
-    font-weight: 400;
-}
-
-/**
-* ------------------------------------------------
-* INPUTS
-* ------------------------------------------------
-*/
-.mat-form-field-appearance-fill .mat-form-field-flex {
-    border-radius: 50px !important;
-    padding-left: 30px !important;
-    padding-right: 30px !important; 
-    border: 1px solid transparent !important;
-}
-
-.mat-focused .mat-form-field-flex {
-    border: 1px solid $blue !important;
-    box-shadow: 0 7px 14px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 8%);
-}
-
-.mat-form-field-underline {
-    display: none;
-}
-
-.mat-form-field-wrapper {
-    padding-bottom: 15px;
-}
-
-// Forms
-mat-form-field {
-    width: 100%;
-}
-
 /* #region AUTHENTICATION PAGES */
 .authentication-links {
     margin-top: 20px;
@@ -166,20 +105,6 @@ main#authentication-body {
 }
 /* #endregion */
 
-/**
-* ------------------------------------------------
-* FORMS
-* ------------------------------------------------
-*/
-.form-error__message {
-    color: $red;
-    text-align: left;
-    padding: 10px 20px;
-    border-left: 3px solid $red;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
 .header-view {
     display: flex;
     justify-content: space-between;
@@ -199,10 +124,7 @@ main#authentication-body {
     margin-bottom: 10px;
 }
 
-.flashcard-card {
-    border-bottom: 4px solid $green;
-}
-
-.flashcard-card_prior {
-    border-bottom: 4px solid $red;
+.end-revision {
+    text-align: center;
+    margin-top: 40px;
 }

@@ -1,14 +1,15 @@
 <div class="revision-container" *ngIf="isLoading">
     <div *ngIf="!endOfRevision">
-        <mat-card>
+        <mat-card class="revision-card">
+            <div class="recto mat-small">Recto</div>
             {{ currentFlashcard.front }}
         </mat-card>
 
         <div *ngIf="!endOfRevision">
-            <div>
-                {{ attempt }}
+            <div class="attempt-counter">
+                Tentative restante : <strong>{{ attempt }}</strong>
             </div>
-            <form [formGroup]="quizForm" (ngSubmit)="checkResponse()">
+            <form [formGroup]="quizForm" (ngSubmit)="checkResponse()" class="quiz-response">
                 <div class="form-container">
                     <mat-form-field appearance="fill">
                         <mat-label>Réponse</mat-label>

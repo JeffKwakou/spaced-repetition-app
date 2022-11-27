@@ -1,7 +1,7 @@
 <main id="authenticated-body" class="mat-typography">
     <div class="container">
         <div class="header-view">
-            <h1>{{'app.folder.myFolders' | translate}}</h1>
+            <h1 class="mat-display-4">{{'app.folder.myFolders' | translate}}</h1>
 
             <div>
                 <button mat-mini-fab color="primary" aria-label="Bouton pour ajouter un nouveau dossier" (click)="openDialogAddFolder()">
@@ -24,7 +24,7 @@
                 <button mat-flat-button color="primary" class="button-primary" [matMenuTriggerFor]="menu">
                     {{'app.folder.filterFolders' | translate}}
                 </button>
-                <mat-menu #menu="matMenu"> 
+                <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="onFilterFolders('default')">
                         {{'app.option.default' | translate}}
                         <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFolderBy == filterFolderValue.default">done</mat-icon>
@@ -49,7 +49,6 @@
             <div class="col-lg-6" *ngFor="let folder of folders">
                 <div class="folder-card-container">
                     <mat-card class="mat-elevation-z3 folder-card" [routerLink]="['/flashcards', folder._id]" routerLinkActive="router-link-active">
-                        <!-- <mat-icon class="icon-folder" aria-hidden="false" aria-label="Example home icon">folder</mat-icon> -->
                         <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 576 464" style="enable-background:new 0 0 576 464;" xml:space="preserve">
                         <path class="svg-primary" d="M545.9,217c-7.6-13.2-18.4-21.6-33.9-23.5c-11.8-1.5-23.6-0.8-35.4-1c-7.1-0.1-7.2-0.1-7.3-7.3
@@ -67,7 +66,7 @@
                         </svg>
 
                         <div>
-                            <h2>{{folder.title}}</h2> 
+                            <h2>{{folder.title}}</h2>
                             <div>
                                 {{'app.folder.category' | translate}}: <strong>{{folder.category}}</strong>
                             </div>

@@ -1,0 +1,130 @@
+.flashcard_good {
+    border-bottom: 4px solid $green;
+}
+
+.flashcard_prior {
+    border-bottom: 4px solid $red;
+}
+
+.basic-card {
+    margin: 10px 0;
+}
+
+// ! REMOVE DUPLICATED CODE : div(recto/verso)
+
+// Flashcard
+.flashcard-card {
+    .card-title-container {
+        margin-bottom: 20px;
+    }
+
+    mat-card-title {
+        line-height: 110%;
+        margin-bottom: 20px;
+
+        border: 1px solid $light-grey;
+        padding: 20px 10px;
+        border-radius: 10px;
+        position: relative;
+        text-align: center;
+
+        div {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            background-color: $blue;
+            padding: 5px 10px;
+            border-radius: 50px;
+            transform: translateY(-50%);
+            color: $white;
+        }
+
+        .recto {
+            background-color: $blue;
+        }
+        .verso {
+            background-color: $orange;
+        }
+    }
+
+    mat-card-subtitle {
+        margin: 0;
+    }
+}
+
+// Revision
+.revision-container {
+    mat-card {
+        position: relative;
+
+        div {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            background-color: $blue;
+            padding: 5px 10px;
+            border-radius: 50px;
+            color: $white;
+        }
+
+        .recto {
+            background-color: $blue;
+        }
+        .verso {
+            background-color: $orange;
+        }
+    }
+}
+
+.revision-card {
+    height: 300px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.quiz-response {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto max-content;
+
+    .mat-form-field-wrapper {
+        padding: 0;
+    }
+}
+
+.attempt-counter {
+    margin-bottom: 10px;
+}
+
+// Radio group
+mat-radio-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+
+    mat-radio-button {
+        text-align: center;
+        border: 1px solid $light-grey;
+        border-radius: 100px;
+
+        label {
+            padding: 20px;
+        }
+
+        .mat-radio-container {
+            display: none;
+        }
+
+        &.mat-radio-checked {
+            background-color: $orange;
+            color: $white;
+            font-weight: 600;
+        }
+    }
+}

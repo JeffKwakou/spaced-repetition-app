@@ -6,10 +6,12 @@
 
 $spaced-repetition-typography: mat.define-typography-config(
     $font-family: 'Poppins, sans-serif',
-    $headline: mat.define-typography-level(30px, 120%, 700),
+    $display-4: mat.define-typography-level(30px, 120%, 700),
+    $headline: mat.define-typography-level(24px, 120%, 700),
     $title: mat.define-typography-level(20px, 120%, 600),
     $body-1: mat.define-typography-level(14px, 130%, 400),
     $body-2: mat.define-typography-level(14px, 130%, 500),
+    $caption: mat.define-typography-level(10px, 130%, 400),
     $button: mat.define-typography-level(14px, 100%, 400)
 );
 

@@ -1,6 +1,7 @@
 <div class="revision-container" *ngIf="isLoading">
     <div *ngIf="!endOfRevision">
-        <mat-card>
+        <mat-card class="mat-elevation-z3 revision-card">
+            <div class="recto mat-small">Recto</div>
             {{ currentFlashcard.front }}
         </mat-card>
 
@@ -8,13 +9,11 @@
             <form [formGroup]="quizForm" (ngSubmit)="checkResponse()">
                 <div class="form-container">
                     <mat-radio-group formControlName="response">
-                        <div *ngFor="let card of shuffledDeck">
-                            <mat-radio-button value="{{ card.back }}">{{ card.back }}</mat-radio-button>
-                        </div>
+                        <mat-radio-button class="mat-elevation-z1" value="{{ card.back }}" *ngFor="let card of shuffledDeck">{{ card.back }}</mat-radio-button>
                     </mat-radio-group>
                 </div>
 
-                <button type="submit" mat-flat-button color="accent" class="button-primary" [disabled]="quizForm.invalid">Valider la réponse</button>
+                <button type="submit" mat-flat-button color="accent" class="button-primary btn-large" [disabled]="quizForm.invalid">Valider la réponse</button>
             </form>
         </div>
     </div>
