@@ -1,0 +1,18 @@
+<main class="w-full h-screen">
+    <div class="authentication-container mat-typography">
+        <div *ngIf="displayViewEmail()" class="text-center">
+            {{'authentication.emailResetPassword' | translate}} : <br>
+            <span class="view-email">{{ viewEmail }}</span>
+        </div>
+
+        <div *ngIf="displayViewPassword()" class="text-center">
+            <p>
+                {{'authentication.passwordReset' | translate}}
+            </p>
+
+            <div>
+                <button mat-flat-button routerLink="/auth/login"  type="button" class="btn-primary" color="primary">{{'form.login' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</main>

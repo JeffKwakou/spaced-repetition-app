@@ -1,0 +1,33 @@
+<div class="revision-container" *ngIf="isLoading">
+    <div #revisionCard class="revision-card" *ngIf="!endOfRevision">
+        <div class="revision-card-content mat-elevation-z3" (click)="flipCard()">
+            <mat-card class="card-front">
+                <div class="bg-primary-500 mat-small">Recto</div>
+                {{ currentFlashcard.front }}
+            </mat-card>
+            <mat-card class="card-back">
+                <div class="bg-accent-500 mat-small">Verso</div>
+                {{ currentFlashcard.back }}
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="revision-response" *ngIf="!endOfRevision">
+        <button mat-flat-button color="primary" class="btn-primary" (click)="submitResponse(1)">{{'app.revision.standard.notAtAll' | translate}}</button>
+        <button mat-flat-button color="primary" class="btn-primary" (click)="submitResponse(2)">{{'app.revision.standard.notVery' | translate}}</button>
+        <button mat-flat-button color="primary" class="btn-primary" (click)="submitResponse(3)">{{'app.revision.standard.average' | translate}}</button>
+        <button mat-flat-button color="primary" class="btn-primary" (click)="submitResponse(4)">{{'app.revision.standard.good' | translate}}</button>
+        <button mat-flat-button color="primary" class="btn-primary" (click)="submitResponse(5)">{{'app.revision.standard.veryGood' | translate}}</button>
+    </div>
+
+    <div *ngIf="endOfRevision" class="mt-10 text-center">
+        <p>
+            {{'app.revision.endOfRevision' | translate}}
+        </p>
+        <button type="button" mat-flat-button color="primary" class="btn-primary" [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active">Retour à la liste de cartes</button>
+    </div>
+</div>
+
+<div *ngIf="!isLoading">
+    <mat-spinner></mat-spinner>
+</div>

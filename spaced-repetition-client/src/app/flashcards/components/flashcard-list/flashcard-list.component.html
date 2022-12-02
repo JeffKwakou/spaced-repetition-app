@@ -1,0 +1,87 @@
+<main class="mat-typography relative top-16 mt-8 p-3 md:0">
+    <div class="container mx-auto">
+        <div class="flex justify-between items-center mb-5">
+            <h1 class="mat-display-4"><button mat-button routerLink="/folders"><mat-icon>arrow_back_ios</mat-icon></button>{{'app.flashcard.myCards' | translate}}</h1>
+
+            <div>
+                <button mat-mini-fab color="primary" aria-label="Bouton pour ajouter un nouveau dossier" (click)="openDialogAddFlashcard()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <form>
+                <div class="form-container">
+                    <mat-form-field class="w-full" appearance="fill">
+                        <mat-label>{{'form.label.search' | translate}}</mat-label>
+                        <input matInput type="text" name="search" [(ngModel)]="searchingFlashcard" (ngModelChange)="searchFlashcardByKeyword()">
+                    </mat-form-field>
+                </div>
+            </form>
+
+            <div class="mb-2">
+                <button mat-flat-button color="accent" class="btn-primary w-full" (click)="launchNewRevision()" >
+                    {{'app.flashcard.launchRepetition' | translate}}
+                </button>
+            </div>
+
+            <div>
+                <button mat-flat-button color="primary" class="btn-primary" [matMenuTriggerFor]="menu">
+                    {{'app.flashcard.filterCards' | translate}}
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onFilterFlashcards('default')">
+                        {{'app.option.default' | translate}}
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.default">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('front')">
+                        {{'app.option.recto' | translate}}
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.front">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('back')">
+                        {{'app.option.verso' | translate}}
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.back">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('revisiondate')">
+                        {{'app.option.repetitionDate' | translate}}
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.revisiondate">done</mat-icon>
+                    </button>
+                    <button mat-menu-item (click)="onFilterFlashcards('lastadd')">
+                        {{'app.option.lastAdded' | translate}}
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="filterFlashcardBy == filterFlashcardValue.lastadd">done</mat-icon>
+                    </button>
+                </mat-menu>
+            </div>
+
+
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div *ngFor="let flashcard of flashcards">
+                <mat-card class="mat-elevation-z3 flashcard-card border-b-solid border-b-4" [ngClass]="[!checkDateFolder(flashcard.date_revision) ? 'border-b-warn-500' : 'border-b-success-500']">
+                    <div class="card-title-container">
+                        <mat-card-title><div class="bg-primary-500 mat-small">Recto</div> {{ flashcard.front }}</mat-card-title>
+                        <mat-card-title><div class="bg-accent-500 mat-small">Verso</div> {{ flashcard.back }}</mat-card-title>
+                    </div>
+
+                    <mat-card-subtitle>{{'app.flashcard.nextRepetition' | translate}} {{ flashcard.date_revision | date: 'dd/M/YYYY' }}</mat-card-subtitle>
+
+                    <div class="flashcard-card__option">
+                        <button mat-button [matMenuTriggerFor]="flashcardOption">
+                            <mat-icon aria-hidden="false" aria-label="Example home icon">more_vert</mat-icon>
+                        </button>
+                        <mat-menu #flashcardOption="matMenu">
+                            <button mat-menu-item (click)="openDialogUpdateFlashcard(flashcard._id)">
+                                {{'app.option.update' | translate}}
+                            </button>
+                            <button mat-menu-item (click)="deleteFlashcard(flashcard._id)">
+                                {{'app.option.delete' | translate}}
+                            </button>
+                        </mat-menu>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</main>

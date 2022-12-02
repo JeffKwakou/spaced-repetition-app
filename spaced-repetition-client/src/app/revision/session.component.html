@@ -1,0 +1,11 @@
+<main class="mat-typography relative top-16 mt-8 p-3 md:0">
+    <div class="container mx-auto">
+        <div class="flex justify-between items-center mb-5">
+            <h1><button mat-button [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active" ><mat-icon>arrow_back_ios</mat-icon></button> {{'app.revision.sessionRevision' | translate}}</h1>
+        </div>
+
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</main>

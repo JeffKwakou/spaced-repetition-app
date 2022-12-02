@@ -1,0 +1,40 @@
+<header id="main-header" class="p-3 md:p-0">
+    <div class="container mx-auto">
+        <div class="flex justify-between">
+            <div class="flex items-center">
+                <span class="text-primary-500 font-black text-xl">RepeatAgain</span>
+            </div>
+
+            <div>
+                <nav class="flex items-center">
+                    <div>
+                        <form class="form-group">
+                            <mat-select class="form-control" [(ngModel)]="selectLang" name="selectLang" (change)="setTransLanguage()">
+                                <mat-option *ngFor="let lang of TransLang" value="{{lang}}">{{ lang | uppercase }}</mat-option>
+                            </mat-select>
+                        </form>
+                    </div>
+                    <div>
+                        <button mat-button (click)="setDarkTheme()">
+                            <mat-icon>dark_mode</mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="isAuthenticated">
+                        <button mat-button>
+                            <mat-icon matBadge="0" matBadgeColor="warn">notifications</mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="isAuthenticated">
+                        <button mat-button [matMenuTriggerFor]="accountUser">
+                            <mat-icon>account_circle</mat-icon>
+                        </button>
+                        <mat-menu #accountUser="matMenu">
+                            <button mat-menu-item><mat-icon>settings</mat-icon>{{'header.settings' | translate}}</button>
+                            <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>{{'header.logout' | translate}}</button>
+                        </mat-menu>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

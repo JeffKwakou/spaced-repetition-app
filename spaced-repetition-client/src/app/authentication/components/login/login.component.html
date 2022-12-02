@@ -1,0 +1,45 @@
+<main class="w-full h-screen">
+    <div class="authentication-container">
+        <div class="authentication-content">
+            <div class="mat-typography mb-5">
+                <h1>{{'authentication.title.login' | translate}}</h1>
+            </div>
+
+            <div *ngIf="loginFormErrorMessage" class="form-error__message mat-elevation-z1">
+                {{ loginFormErrorMessage }}
+            </div>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
+                <div class="form-container">
+                    <mat-form-field class="w-full" appearance="fill">
+                        <mat-label>{{'form.label.email' | translate}}</mat-label>
+                        <input matInput formControlName="email" required>
+                        <mat-error *ngIf="loginForm.controls.email.invalid">{{'form.error.required' | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-container">
+                    <mat-form-field class="w-full" appearance="fill">
+                        <mat-label>{{'form.label.password' | translate}}</mat-label>
+                        <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+                        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="loginForm.controls.password.invalid">{{'form.error.required' | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button mat-flat-button type="submit" class="btn-primary w-full uppercase font-medium" color="primary">{{'form.login' | translate}}</button>
+            </form>
+
+            <div class="mt-4 mat-typography">
+                <div class="mb-2">
+                    <a routerLink="/auth/forgot-password">{{'authentication.forgotPassword' | translate}}</a>
+                </div>
+                <div>
+                    {{'authentication.noAccount' | translate}} <a routerLink="/auth/signup">{{'form.signup' | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

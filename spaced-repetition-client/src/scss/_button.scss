@@ -5,17 +5,8 @@ button.mat-primary, button.mat-accent {
     }
 }
 
-.mat-flat-button.button-primary {
+.mat-flat-button.btn-primary {
     line-height: 45px;
     padding: 0px 32px;
     border-radius: 50px;
-}
-
-.mat-flat-button.btn-large {
-    width: 100%;
-}
-
-.mat-flat-button.btn-auth {
-    text-transform: uppercase;
-    font-weight: 400;
 }

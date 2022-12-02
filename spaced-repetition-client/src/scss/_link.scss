@@ -6,9 +6,9 @@
     a {
         text-decoration: none;
         color: $blue;
-    
+
         &:hover {
-            color: mat.get-color-from-palette($blue-palette, 900);
+            color: mat.get-color-from-palette($blue-palette, 700);
             text-decoration: underline;
         }
     }
@@ -18,7 +18,7 @@
     a {
         text-decoration: none;
         color: $blue;
-    
+
         &:hover {
             color: mat.get-color-from-palette($blue-palette, 300);
             text-decoration: underline;
