@@ -84,12 +84,23 @@
         "revision": {
             "sessionRevision": "Session de révision",
             "endOfRevision": "Fin de la révision",
+            "back": "Retour à la liste de cartes",
+            "recto": "Recto",
+            "verso": "Verso",
             "standard": {
                 "veryGood": "Très bien",
                 "good": "Bien",
                 "average": "Moyen",
                 "notVery": "Peu",
                 "notAtAll": "Pas du tout"
+            },
+            "quiz" : {
+                "attempt": "Nombre de tentatives",
+                "response": "Réponse",
+                "typeResponse": "Tapez votre réponse"
+            },
+            "qcm": {
+                "validateResponse": "Valider la réponse"
             }
         }
     }

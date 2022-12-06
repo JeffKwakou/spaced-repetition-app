@@ -84,12 +84,23 @@
         "revision": {
             "sessionRevision": "Session of revision",
             "endOfRevision": "End of revision",
+            "back": "Back to the list of cards",
+            "recto": "Front",
+            "verso": "Back",
             "standard": {
                 "veryGood": "Very good",
                 "good": "Good",
                 "average": "Average",
                 "notVery": "Not very",
                 "notAtAll": "Not at all"
+            },
+            "quiz" : {
+                "attempt": "Number of attempts",
+                "response": "Response",
+                "typeResponse": "Type your response"
+            },
+            "qcm": {
+                "validateResponse": "Validate the response"
             }
         }
     }

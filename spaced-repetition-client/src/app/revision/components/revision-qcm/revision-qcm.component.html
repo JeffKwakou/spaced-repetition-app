@@ -1,19 +1,19 @@
 <div class="revision-container" *ngIf="isLoading">
     <div *ngIf="!endOfRevision">
         <mat-card class="mat-elevation-z3 revision-card">
-            <div class="bg-primary-500 mat-small">Recto</div>
+            <div class="bg-primary-500 mat-small">{{'app.revision.recto' | translate}}</div>
             {{ currentFlashcard.front }}
         </mat-card>
 
         <div *ngIf="!endOfRevision">
             <form [formGroup]="quizForm" (ngSubmit)="checkResponse()">
                 <div class="form-container">
-                    <mat-radio-group formControlName="response">
+                    <mat-radio-group formControlName="response" class="qcm-response">
                         <mat-radio-button class="mat-elevation-z1" value="{{ card.back }}" *ngFor="let card of shuffledDeck">{{ card.back }}</mat-radio-button>
                     </mat-radio-group>
                 </div>
 
-                <button type="submit" mat-flat-button color="accent" class="btn-primary w-full" [disabled]="quizForm.invalid">Valider la réponse</button>
+                <button mat-flat-button type="submit" color="accent" class="btn-primary w-full" [disabled]="quizForm.invalid">{{'app.revision.qcm.validateResponse' | translate}}</button>
             </form>
         </div>
     </div>
@@ -22,7 +22,7 @@
         <p>
             {{'app.revision.endOfRevision' | translate}}
         </p>
-        <button type="button" mat-flat-button color="primary" class="btn-primary" [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active">Retour à la liste de cartes</button>
+        <button type="button" mat-flat-button color="primary" class="btn-primary" [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active">{{'app.revision.back' | translate}}</button>
     </div>
 </div>
 

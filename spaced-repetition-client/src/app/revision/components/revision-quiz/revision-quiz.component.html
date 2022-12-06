@@ -1,19 +1,19 @@
 <div class="revision-container" *ngIf="isLoading">
     <div *ngIf="!endOfRevision">
         <mat-card class="revision-card">
-            <div class="bg-primary-500 mat-small">Recto</div>
+            <div class="bg-primary-500 mat-small">{{'app.revision.recto' | translate}}</div>
             {{ currentFlashcard.front }}
         </mat-card>
 
         <div *ngIf="!endOfRevision">
-            <div class="attempt-counter">
-                Tentative restante : <strong>{{ attempt }}</strong>
+            <div class="mb-5">
+                {{'app.revision.quiz.attempt' | translate}} : <strong>{{ attempt }}</strong>
             </div>
             <form [formGroup]="quizForm" (ngSubmit)="checkResponse()" class="quiz-response">
                 <div class="form-container">
                     <mat-form-field class="w-full" appearance="fill">
-                        <mat-label>Réponse</mat-label>
-                        <input matInput formControlName="response" required>
+                        <mat-label>{{'app.revision.quiz.response' | translate}}</mat-label>
+                        <input matInput formControlName="response" placeholder="{{'app.revision.quiz.typeResponse' | translate}}" required>
                     </mat-form-field>
                 </div>
 
@@ -26,7 +26,7 @@
         <p>
             {{'app.revision.endOfRevision' | translate}}
         </p>
-        <button type="button" mat-flat-button color="primary" class="btn-primary" [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active">Retour à la liste de cartes</button>
+        <button type="button" mat-flat-button color="primary" class="btn-primary" [routerLink]="['/flashcards', folderId]" routerLinkActive="router-link-active">{{'app.revision.back' | translate}}</button>
     </div>
 </div>
 

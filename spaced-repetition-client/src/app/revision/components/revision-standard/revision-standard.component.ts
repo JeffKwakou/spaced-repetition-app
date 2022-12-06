@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, fromEvent } from 'rxjs';
 import { Flashcard } from 'src/app/shared/models/Flashcard';
 import { ApiService } from 'src/app/shared/services/api.service';
 
