@@ -1,9 +1,9 @@
 @import './scss/index';
 
 // Tailwind
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* #region GENERAL */
 html, body {

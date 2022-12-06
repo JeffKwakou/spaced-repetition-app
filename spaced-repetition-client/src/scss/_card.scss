@@ -26,13 +26,6 @@
             transform: translateY(-50%);
             color: $white;
         }
-
-        .recto {
-            background-color: $blue;
-        }
-        .verso {
-            background-color: $orange;
-        }
     }
 
     mat-card-subtitle {
@@ -77,17 +70,15 @@
     }
 }
 
-.attempt-counter {
-    margin-bottom: 10px;
-}
-
-// Radio group
-mat-radio-group {
+// QCM RESPONSE
+mat-radio-group.qcm-response {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     gap: 10px;
     margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     mat-radio-button {
         text-align: center;
