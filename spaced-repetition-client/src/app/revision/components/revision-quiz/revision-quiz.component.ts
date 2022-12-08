@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Flashcard } from 'src/app/shared/models/Flashcard';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -25,16 +25,16 @@ export class RevisionQuizComponent implements OnInit {
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.parent?.params.subscribe((params: any) => {
-      this.folderId = params.folderId;
+    this.activatedRoute.parent?.params.subscribe((params: Params) => {
+      this.folderId = params['folderId'];
       this.getCardToRevise();
     });
   }
 
   public checkResponse(): void {
     if (this.quizForm.value.response !== this.currentFlashcard.back && this.attempt > 1 ) {
-    this.attempt--;
-    this.quizForm.reset();
+      this.attempt--;
+      this.quizForm.reset();
     } else {
       this.updateFlashcard();
     }

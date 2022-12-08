@@ -75,7 +75,7 @@ const materialModules = [
   MatPaginatorModule,
   MatSortModule,
   MatTableModule,
-]
+];
 
 @NgModule({
   declarations: [],

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ApiService } from './api.service';
 
 export const JWT_NAME = 'access-token';
 
@@ -11,20 +9,20 @@ export const JWT_NAME = 'access-token';
 })
 export class AuthenticationService {
 
-  constructor(private apiService: ApiService, private jwtHelper: JwtHelperService, private router: Router) { }
+  constructor(private jwtHelper: JwtHelperService) { }
 
   // Store JWT Token in local storage
-  login(response: any): void {
-    localStorage.setItem(JWT_NAME, response.token)
+  public login(response: any): void {
+    localStorage.setItem(JWT_NAME, response.token);
   }
 
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem(JWT_NAME)!
-    return !this.jwtHelper.isTokenExpired(token)
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem(JWT_NAME)!;
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
-  logout() {
-    localStorage.clear()
+  public logout() {
+    localStorage.clear();
   }
 
   // CUSTOM VALIDATOR

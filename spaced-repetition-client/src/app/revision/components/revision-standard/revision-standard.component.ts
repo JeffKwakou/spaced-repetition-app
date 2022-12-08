@@ -27,13 +27,13 @@ export class RevisionStandardComponent implements OnInit {
     });
   }
 
-  public submitResponse(attempt: number) {
-    this.apiService.updateRevisedFlashcard(attempt, this.currentFlashcard).subscribe((res: any) => {
-      this.nextCard()
+  public submitResponse(attempt: number): void {
+    this.apiService.updateRevisedFlashcard(attempt, this.currentFlashcard).subscribe(() => {
+      this.nextCard();
     })
   }
 
-  public flipCard() {
+  public flipCard(): void {
     if (this.revisionCardElement.nativeElement.classList.contains('active')) {
       this.revisionCardElement.nativeElement.classList.remove('active')
     } else {

@@ -6,7 +6,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>{{'form.label.question' | translate}}</mat-label>
                 <input matInput formControlName="front" required>
-                <mat-error *ngIf="addFlashcardForm.controls.front.invalid">{{'form.error.required' | translate}}</mat-error>
+                <mat-error *ngIf="front?.invalid">{{'form.error.required' | translate}}</mat-error>
             </mat-form-field>
         </div>
 
@@ -14,16 +14,9 @@
             <mat-form-field appearance="fill">
                 <mat-label>{{'form.label.answer' | translate}}</mat-label>
                 <input matInput formControlName="back" required>
-                <mat-error *ngIf="addFlashcardForm.controls.back.invalid">{{'form.error.required' | translate}}</mat-error>
+                <mat-error *ngIf="back?.invalid">{{'form.error.required' | translate}}</mat-error>
             </mat-form-field>
         </div>
-
-        <!-- <div class="form-container">
-            <mat-form-field appearance="fill">
-                <mat-label>{{'form.label.additionalNote' | translate}}</mat-label>
-                <textarea matInput formControlName="note" ></textarea>
-              </mat-form-field>
-        </div> -->
 
         <button type="submit" mat-flat-button color="primary" class="button-primary" [disabled]="addFlashcardForm.invalid"><mat-icon>add</mat-icon>{{'app.button.add' | translate}}</button>
     </form>

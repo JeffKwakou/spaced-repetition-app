@@ -1,4 +1,5 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -9,21 +10,28 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isAuthenticated: boolean;
+  public isAuthenticated: boolean;
+  public isThemeDark: boolean = false;
 
-  isThemeDark: boolean = false;
+  public selectLang: string = localStorage.getItem('lang') || 'fr';
+  public TransLang: string[] = [];
 
-  selectLang: string = localStorage.getItem('lang') || 'fr';
-  TransLang: string[] = [];
+  @ViewChild('body') body: ElementRef;
 
-  constructor(private authenticationService: AuthenticationService, private route: Router, private translate: TranslateService) {
-    route.events.subscribe(val => {
-      this.isAuthenticated = this.authenticationService.isAuthenticated()
-    })
+  constructor(
+    private authenticationService: AuthenticationService,
+    private route: Router,
+    private translate: TranslateService,
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2
+  ) {
+    route.events.subscribe(() => {
+      this.isAuthenticated = this.authenticationService.isAuthenticated();
+    });
 
     translate.setDefaultLang('fr');
     translate.addLangs(['en', 'fr']);
-    this.setTransLanguage()
+    this.setTransLanguage();
   }
 
   ngOnInit(): void {
@@ -31,36 +39,39 @@ export class HeaderComponent implements OnInit {
 
     // Set dark mode
     this.isThemeDark = localStorage.getItem('theme') == 'dark' ? false : true;
-    this.setDarkTheme()
+    this.setDarkTheme();
   }
 
-  // i18n
-  setTransLanguage(){
+  public setTransLanguage(): void {
     this.translate.use(this.selectLang);
     localStorage.setItem('lang', this.selectLang)
   }
 
-  getTransLanguage(){
-    this.TransLang=[...this.translate.getLangs()];
-  }
-
-  onLogout() {
+  public onLogout(): void {
     this.authenticationService.logout();
-    this.route.navigate(['/login'])
+    this.route.navigate(['/login']);
   }
 
-  setDarkTheme() {
+  public setDarkTheme(): void {
+    const body = this.document.body;
+
     if (!this.isThemeDark) {
-      document.querySelector('body')?.classList.remove('light-theme')
-      document.querySelector('body')?.classList.add('dark-theme')
-      this.isThemeDark = true
+      this.isThemeDark = true;
       localStorage.setItem('theme', 'dark');
+
+      this.renderer.removeClass(body, 'light-theme');
+      this.renderer.addClass(body, 'dark-theme');
     } else {
-      document.querySelector('body')?.classList.add('light-theme')
-      document.querySelector('body')?.classList.remove('dark-theme')
-      this.isThemeDark = false
+      this.isThemeDark = false;
       localStorage.setItem('theme', 'light');
+
+      this.renderer.addClass(body, 'light-theme');
+      this.renderer.removeClass(body, 'dark-theme');
     }
+  }
+
+  private getTransLanguage(): void{
+    this.TransLang = [...this.translate.getLangs()];
   }
 
 }

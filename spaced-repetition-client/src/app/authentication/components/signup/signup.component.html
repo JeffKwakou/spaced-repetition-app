@@ -14,9 +14,9 @@
                     <mat-form-field class="w-full" appearance="fill">
                         <mat-label>{{'form.label.username' | translate}}</mat-label>
                         <input matInput formControlName="username" required>
-                        <mat-error *ngIf="signupForm.controls.username.hasError('required')">{{'form.error.required' | translate}}</mat-error>
-                        <mat-error *ngIf="signupForm.controls.username.hasError('minlength')">{{'form.error.minLength4' | translate}}</mat-error>
-                        <mat-error *ngIf="signupForm.controls.username.hasError('pattern')">{{'form.error.onlyAlpha' | translate}}</mat-error>
+                        <mat-error *ngIf="username?.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                        <mat-error *ngIf="username?.hasError('minlength')">{{'form.error.minLength4' | translate}}</mat-error>
+                        <mat-error *ngIf="username?.hasError('pattern')">{{'form.error.onlyAlpha' | translate}}</mat-error>
                     </mat-form-field>
                 </div>
 
@@ -24,8 +24,8 @@
                     <mat-form-field class="w-full" appearance="fill">
                         <mat-label>{{'form.label.email' | translate}}</mat-label>
                         <input matInput formControlName="email" required>
-                        <mat-error *ngIf="signupForm.controls.email.hasError('required')">{{'form.error.required' | translate}}</mat-error>
-                        <mat-error *ngIf="signupForm.controls.email.hasError('email')">{{'form.error.validEmail' | translate}}</mat-error>
+                        <mat-error *ngIf="email?.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                        <mat-error *ngIf="email?.hasError('email')">{{'form.error.validEmail' | translate}}</mat-error>
                     </mat-form-field>
                 </div>
 
@@ -37,9 +37,9 @@
                             <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
                               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('required')">{{'form.error.required' | translate}}</mat-error>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('minlength')">{{'form.error.minLength4' | translate}}</mat-error>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.password.hasError('pattern')">{{'form.error.passwordRules' | translate}}</mat-error>
+                            <mat-error *ngIf="password?.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                            <mat-error *ngIf="password?.hasError('minlength')">{{'form.error.minLength4' | translate}}</mat-error>
+                            <mat-error *ngIf="password?.hasError('pattern')">{{'form.error.passwordRules' | translate}}</mat-error>
                         </mat-form-field>
                     </div>
 
@@ -50,7 +50,7 @@
                             <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
                               <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="signupForm.controls.passwords.controls.confirmPassword.hasError('required')">{{'form.error.required' | translate}}</mat-error>
+                            <mat-error *ngIf="confirmPassword?.hasError('required')">{{'form.error.required' | translate}}</mat-error>
                             <mat-error *ngIf="signupForm.errors?.['valuesDoNotMatch']">{{'form.error.samePassword' | translate}}</mat-error>
                         </mat-form-field>
                     </div>

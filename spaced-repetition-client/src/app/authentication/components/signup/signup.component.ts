@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { SharedService } from 'src/app/shared/services/shared.service';
 import { Translate } from 'src/app/shared/tools/translate.tool';
 
 @Component({
@@ -11,22 +12,25 @@ import { Translate } from 'src/app/shared/tools/translate.tool';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  public hidePassword: boolean = true;
+  public hideConfirmPassword: boolean = true;
+  public signupFormErrorMessage: string = "";
 
-  hidePassword: boolean = true;
-  hideConfirmPassword: boolean = true;
-
-  signupFormErrorMessage: string = "";
-
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private snackBar: MatSnackBar, private apiService: ApiService) { }
+  constructor(
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private snackBar: MatSnackBar,
+    private apiService: ApiService,
+    private sharedService: SharedService
+  ) { }
 
   ngOnInit(): void {
-    this.signupForm.statusChanges.subscribe(result => {
+    this.signupForm.statusChanges.subscribe(() => {
       this.signupFormErrorMessage = "";
     })
   }
 
-  // INIT SIGNUP FORM
-  signupForm = this.fb.group({
+  public signupForm: FormGroup = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z ]*$')]],
     email: ['', [Validators.required, Validators.email]],
     passwords: this.fb.group({
@@ -37,8 +41,24 @@ export class SignupComponent implements OnInit {
     validators: this.authenticationService.controlValuesAreEqual(['passwords', 'password'], ['passwords', 'confirmPassword'])
   })
 
-  // SUBMIT FORM
-  onSubmitSignupForm() {
+  // Getters form
+  get username() {
+    return this.signupForm.get('username');
+  }
+
+  get email() {
+    return this.signupForm.get('email');
+  }
+
+  get password() {
+    return this.signupForm.get('passwords')?.get('password');
+  }
+
+  get confirmPassword() {
+    return this.signupForm.get('passwords')?.get('confirmPassword');
+  }
+
+  public onSubmitSignupForm(): void {
     if (!this.signupForm.invalid) {
       let formFields = {
         'username': this.signupForm.value.username,
@@ -46,17 +66,15 @@ export class SignupComponent implements OnInit {
         'password': this.signupForm.value.passwords?.password
       }
 
-      this.apiService.register(formFields).subscribe((res: any) => {
-        this.snackBar.open(res.body.message, 'OK', {
-          duration: 5000
-        })
-      },
-      (res: any) => {
-        this.signupFormErrorMessage = res.error.message
-        this.snackBar.open(res.error.message, 'OK', {
-          duration: 5000
-        })
-      })
+      this.apiService.register(formFields).subscribe({
+        next: (res: any) => {
+          this.sharedService.openSnackBar(res.body.message, 'OK');
+        },
+        error: (res: any) => {
+          this.signupFormErrorMessage = res.error.message;
+          this.sharedService.openSnackBar(res.error.message, 'OK');
+        }
+      });
     } else {
       this.signupFormErrorMessage = Translate.get('form.error.error');
     }

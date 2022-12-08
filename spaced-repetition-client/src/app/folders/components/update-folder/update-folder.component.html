@@ -6,7 +6,7 @@
             <mat-form-field class="w-full" appearance="fill">
                 <mat-label>{{'form.label.title' | translate}}</mat-label>
                 <input matInput formControlName="title" required>
-                <mat-error *ngIf="updateFolderForm.controls.title.invalid">{{'form.error.required' | translate}}</mat-error>
+                <mat-error *ngIf="title?.invalid">{{'form.error.required' | translate}}</mat-error>
             </mat-form-field>
         </div>
 
@@ -14,17 +14,7 @@
             <mat-form-field class="w-full" appearance="fill">
                 <mat-label>{{'form.label.category' | translate}}</mat-label>
                 <input matInput formControlName="category" required>
-                <mat-error *ngIf="updateFolderForm.controls.category.invalid">{{'form.error.required' | translate}}</mat-error>
-            </mat-form-field>
-        </div>
-
-        <div class="form-container">
-            <mat-form-field class="w-full" appearance="fill">
-                <mat-label>{{'form.label.repetitionType' | translate}}</mat-label>
-                <mat-select formControlName="revision">
-                  <mat-option value="standard">{{'app.option.standard' | translate}}</mat-option>
-                  <mat-option value="quiz">{{'app.option.quiz' | translate}}</mat-option>
-                </mat-select>
+                <mat-error *ngIf="category?.invalid">{{'form.error.required' | translate}}</mat-error>
             </mat-form-field>
         </div>
 

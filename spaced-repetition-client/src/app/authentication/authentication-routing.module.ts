@@ -9,14 +9,17 @@ import { SignupComponent } from './components/signup/signup.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    title: 'Login | RepeatAgain'
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    title: 'Sign up | RepeatAgain'
   },
   {
     path: 'forgot-password',
+    title: 'Forgot password | RepeatAgain',
     children: [
       {
         path: '',
@@ -30,7 +33,8 @@ const routes: Routes = [
   },
   {
     path: 'message',
-        component: MessageViewComponent
+    component: MessageViewComponent,
+    title: 'Forgot password | RepeatAgain'
   },
   {
     path: '**',

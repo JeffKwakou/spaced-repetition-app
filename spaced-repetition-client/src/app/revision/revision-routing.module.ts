@@ -12,15 +12,18 @@ const routes: Routes = [
     children: [
       {
         path: 'standard',
-        component: RevisionStandardComponent
+        component: RevisionStandardComponent,
+        title: 'Standard revision | RepeatAgain'
       },
       {
         path: 'quiz',
-        component: RevisionQuizComponent
+        component: RevisionQuizComponent,
+        title: 'Quiz revision | RepeatAgain'
       },
       {
         path: 'qcm',
-        component: RevisionQcmComponent
+        component: RevisionQcmComponent,
+        title: 'MCQ revision | RepeatAgain'
       }
     ]
   }

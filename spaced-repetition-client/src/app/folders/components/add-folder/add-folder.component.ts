@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { FolderListComponent } from '../folder-list/folder-list.component';
@@ -11,27 +11,32 @@ import { FolderListComponent } from '../folder-list/folder-list.component';
 })
 export class AddFolderComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, public dialogRef: MatDialogRef<FolderListComponent>) { }
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    public dialogRef: MatDialogRef<FolderListComponent>
+  ) { }
 
   ngOnInit(): void {
   }
 
-  addFolderForm = this.fb.group({
+  public addFolderForm: FormGroup = this.fb.group({
     title: ['', [Validators.required]],
-    category: ['', [Validators.required]],
-    revision: ['standard', [Validators.required]],
+    category: ['', [Validators.required]]
   })
 
-  onSubmitAddFolder() {
-    if (!this.addFolderForm.invalid) {
-      let newFolder = {
-        'title': this.addFolderForm.value.title,
-        'category': this.addFolderForm.value.category,
-        'revision': this.addFolderForm.value.revision
-      }
+  get title() {
+    return this.addFolderForm.get('title');
+  }
 
-      this.apiService.addFolder(newFolder).subscribe((res: any) => {
-        this.addFolderForm.reset()
+  get category() {
+    return this.addFolderForm.get('category');
+  }
+
+  public onSubmitAddFolder(): void {
+    if (!this.addFolderForm.invalid) {
+      this.apiService.addFolder(this.addFolderForm.value).subscribe(() => {
+        this.addFolderForm.reset();
         this.dialogRef.close();
       })
     }

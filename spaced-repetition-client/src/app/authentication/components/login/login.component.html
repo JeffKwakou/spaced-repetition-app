@@ -14,7 +14,7 @@
                     <mat-form-field class="w-full" appearance="fill">
                         <mat-label>{{'form.label.email' | translate}}</mat-label>
                         <input matInput formControlName="email" required>
-                        <mat-error *ngIf="loginForm.controls.email.invalid">{{'form.error.required' | translate}}</mat-error>
+                        <mat-error *ngIf="email?.errors">{{'form.error.required' | translate}}</mat-error>
                     </mat-form-field>
                 </div>
 
@@ -25,7 +25,7 @@
                         <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
                           <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-error *ngIf="loginForm.controls.password.invalid">{{'form.error.required' | translate}}</mat-error>
+                        <mat-error *ngIf="password?.errors">{{'form.error.required' | translate}}</mat-error>
                     </mat-form-field>
                 </div>
 

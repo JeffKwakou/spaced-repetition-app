@@ -23,7 +23,11 @@ export class RevisionQcmComponent implements OnInit {
     response: ['', [Validators.required]]
   })
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private apiService: ApiService,
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.parent?.params.subscribe((params: any) => {
@@ -69,7 +73,7 @@ export class RevisionQcmComponent implements OnInit {
     }
   }
 
-  private dealCards() {
+  private dealCards(): void {
     this.shuffledDeck = [this.flashcards[this.revisionIndex]];
 
     let deck = [...this.flashcards];
@@ -83,11 +87,11 @@ export class RevisionQcmComponent implements OnInit {
       count++;
     }
 
-    this.shuffledDeck.sort((a, b) => 0.5 - Math.random());
+    this.shuffledDeck.sort(() => 0.5 - Math.random());
   }
 
   private updateFlashcard(): void {
-    this.apiService.updateRevisedFlashcard(this.attempt, this.currentFlashcard).subscribe((res: any) => {
+    this.apiService.updateRevisedFlashcard(this.attempt, this.currentFlashcard).subscribe(() => {
       this.nextCard()
     })
   }

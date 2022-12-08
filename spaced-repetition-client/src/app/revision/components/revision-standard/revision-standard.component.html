@@ -1,5 +1,5 @@
 <div class="revision-container" *ngIf="isLoading">
-    <div #revisionCard class="revision-card" *ngIf="!endOfRevision">
+    <div #revisionCard class="revision-card cursor-pointer" *ngIf="!endOfRevision">
         <div class="revision-card-content mat-elevation-z3" (click)="flipCard()">
             <mat-card class="card-front">
                 <div class="bg-primary-500 mat-small">{{'app.revision.recto' | translate}}</div>
