@@ -12,53 +12,44 @@ const UserSchema = new mongoose.Schema({
         required: 'Your email is required',
         trim: true
     },
-
     username: {
         type: String,
         unique: true,
         required: 'Your username is required',
     },
-
     password: {
         type: String,
         required: 'Your password is required',
         max: 100
     },
-
     firstName: {
         type: String,
         required: false,
         max: 100
     },
-
     lastName: {
         type: String,
         required: false,
         max: 100
     },
-
     bio: {
         type: String,
         required: false,
         max: 255
     },
-
     profileImage: {
         type: String,
         required: false,
         max: 255
     },
-    
     isVerified: {
         type: Boolean,
         default: false
     },
-    
     resetPasswordToken: {
         type: String,
         required: false
     },
-
     resetPasswordExpires: {
         type: Date,
         required: false

@@ -23,11 +23,11 @@ router.post("/login", [
 ], validate, Auth.login);
 
 
-//EMAIL Verification
+//Email Verification
 router.get('/verify/:token', Auth.verify);
 router.post('/resend', Auth.resendToken);
 
-//Password RESET
+//Password reset
 router.post('/recover', [
     check('email').isEmail().withMessage('Enter a valid email address'),
 ], validate, Password.recover);

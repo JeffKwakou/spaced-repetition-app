@@ -1,24 +1,22 @@
-const Folder = require('../models/folder')
-const Flashcard = require('../models/flashcard')
+const Folder = require('../models/folder');
+const Flashcard = require('../models/flashcard');
 
 exports.getFlashcards = async (req, res) => {
     try {
-        let flashcards = await Flashcard.find({ folderId: req.params.folderid, date_revision: { $lte: new Date()}})
+        let flashcards = await Flashcard.find({ folderId: req.params.folderid, date_revision: { $lte: new Date()}});
 
-        res.status(200).json({flashcards})
+        res.status(200).json({flashcards});
     } catch (error) {
-        res.status(500).json({success: false, message: error.message})
+        res.status(500).json({success: false, message: error.message});
     }
 };
 
 exports.updateFlashcard = async (req, res) => {
     try {
-        let flashcard = req.body.flashcard
-        const { attempt } = req.body
+        let flashcard = req.body.flashcard;
+        const { attempt } = req.body;
 
-        let date = new Date()
-
-        console.log(date)
+        let date = new Date();
 
         // SM-2 Algorithm
         if (attempt >= 3) {
@@ -37,13 +35,11 @@ exports.updateFlashcard = async (req, res) => {
             flashcard.correct_repetition = 0;
             flashcard.interval = 1;
         }
-    
+
         flashcard.easiness_factor += Math.round(0.1 - (5 - attempt) * (0.08 + (5 - attempt) * 0.02));
         if (flashcard.easiness_factor < 1.3) {
             flashcard.easiness_factor = 1.3;
         }
-
-        console.log(flashcard.date_revision)
 
         // Update flashcard
         const revisedCard = await Flashcard.updateOne({ _id: flashcard._id }, {
@@ -55,8 +51,8 @@ exports.updateFlashcard = async (req, res) => {
             }
         });
 
-        res.status(200).json(revisedCard)
+        res.status(200).json(revisedCard);
     } catch (error) {
-        res.status(500).json({success: false, message: error.message})
+        res.status(500).json({success: false, message: error.message});
     }
 };

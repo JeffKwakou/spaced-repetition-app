@@ -15,8 +15,6 @@
                         <mat-label>{{'form.label.username' | translate}}</mat-label>
                         <input matInput formControlName="username" required>
                         <mat-error *ngIf="username?.hasError('required')">{{'form.error.required' | translate}}</mat-error>
-                        <mat-error *ngIf="username?.hasError('minlength')">{{'form.error.minLength4' | translate}}</mat-error>
-                        <mat-error *ngIf="username?.hasError('pattern')">{{'form.error.onlyAlpha' | translate}}</mat-error>
                     </mat-form-field>
                 </div>
 

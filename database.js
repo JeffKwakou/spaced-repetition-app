@@ -5,7 +5,7 @@ dotenv.config();
 
 module.exports.connect = () => {
     try {
-        mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true })
+        mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
         console.log('Connected to DB!');
     } catch (err) {
         console.log('Failed to connect to MongoDB', err);

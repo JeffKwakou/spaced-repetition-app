@@ -9,12 +9,11 @@ exports.register = async (req, res) => {
     try {
         const { email } = req.body;
 
-        // Make sure this account doesn't already exist
         const user = await User.findOne({ email });
 
         if (user) return res.status(401).json({message: 'The email address you have entered is already associated with another account.'});
 
-        const newUser = new User({ ...req.body, role: "basic" });
+        const newUser = new User({ ...req.body });
 
         const user_ = await newUser.save();
 
@@ -93,7 +92,7 @@ exports.resendToken = async (req, res) => {
 
         if (!user) return res.status(401).json({ message: 'The email address ' + req.body.email + ' is not associated with any account. Double-check your email address and try again.'});
 
-        if (user.isVerified) return res.status(400).json({ message: 'This account has already been verified. Please log in.'});
+        if (user.isVerified) return res.status(401).json({ message: 'This account has already been verified. Please log in.'});
 
         await sendVerificationEmail(user, req, res);
     } catch (error) {
@@ -112,7 +111,7 @@ async function sendVerificationEmail(user, req, res){
         let to = user.email;
         let from = process.env.FROM_EMAIL;
         let link="http://"+req.headers.host+"/api/auth/verify/"+token.token;
-        let html = `<p>Hi ${user.username}<p><br><p>Please click on the following <a href="${link}">link</a> to verify your account.</p> 
+        let html = `<p>Hi ${user.username}<p><br><p>Please click on the following <a href="${link}">link</a> to verify your account.</p>
                   <br><p>If you did not request this, please ignore this email.</p>`;
 
         await sendEmail({to, from, subject, html});

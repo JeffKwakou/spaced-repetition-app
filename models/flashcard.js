@@ -35,10 +35,6 @@ const FlashcardSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    info_sup: {
-        type: String,
-        default: null
-    },
 }, {timestamps: true});
 
 module.exports = mongoose.model('Flashcards', FlashcardSchema);

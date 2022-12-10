@@ -6,20 +6,13 @@ const folderSchema = new mongoose.Schema({
         required: true,
         ref: 'User'
     },
-
     title: {
         type: String,
         required: 'The title of folder is required',
     },
-
     category: {
         type: String,
         required: 'The category of folder is required',
-    },
-
-    type_repetition: {
-        type: String,
-        default: 'standard'
     },
 }, {timestamps: true});
 

@@ -9,7 +9,7 @@ const authenticate = require('../middlewares/authenticate');
 module.exports = app => {
     app.use('/api/auth', auth);
     app.use('/api/user', authenticate, user);
-    app.use('/api/folder', folder);
-    app.use('/api/flashcard', flashcard);
-    app.use('/api/revision', revision);
+    app.use('/api/folder', authenticate, folder);
+    app.use('/api/flashcard', authenticate, flashcard);
+    app.use('/api/revision', authenticate, revision);
 };
