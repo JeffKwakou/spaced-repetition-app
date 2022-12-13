@@ -1,0 +1,38 @@
+<div>
+    <h2 class="pb-2 border-b border-neutral-300 border-solid">Profile informations</h2>
+
+    <form [formGroup]="profileInfoForm" (ngSubmit)="onSubmitProfileInfoForm()">
+        <div class="form-container">
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" required>
+                <mat-error *ngIf="username?.errors">{{'form.error.required' | translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-container">
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Firstname</mat-label>
+                <input matInput formControlName="firstname">
+            </mat-form-field>
+        </div>
+
+        <div class="form-container">
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Lastname</mat-label>
+                <input matInput formControlName="lastname">
+            </mat-form-field>
+        </div>
+
+        <div class="form-container">
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Bio</mat-label>
+                <textarea matInput formControlName="bio" rows="7"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="text-right">
+          <button mat-flat-button color="primary" type="submit" class="btn-primary">Update profile</button>
+        </div>
+    </form>
+</div>

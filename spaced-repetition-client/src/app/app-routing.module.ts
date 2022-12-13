@@ -29,6 +29,12 @@ const routes: Routes = [
     title: "Session of revision | RepeatAgain"
   },
   {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then((m) => m.SettingsModule),
+    canActivate: [AuthGuard],
+    title: 'Settings | RepeatAgain'
+  },
+  {
     path: '**',
     redirectTo:'auth',
     pathMatch: 'full'

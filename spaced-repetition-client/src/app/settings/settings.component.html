@@ -1,0 +1,27 @@
+<main class="mat-typography relative top-16 mt-8 p-3 md:0">
+    <div class="container mx-auto">
+        <div class="mb-8">
+          <h1 class="mat-display-4 "><button mat-button routerLink="/folders"><mat-icon>arrow_back_ios</mat-icon></button>Settings</h1>
+        </div>
+
+        <ng-container>
+            <mat-sidenav-container class="example-container">
+              <mat-sidenav #sidenav mode="side" opened>
+                <div>
+                    <button mat-button routerLink="profile-info">Account</button>
+                </div>
+                <div>
+                    <button mat-button routerLink="profile-custom">Customization</button>
+                </div>
+                <div>
+                  <button mat-button routerLink="profile-custom">Notifications</button>
+              </div>
+              </mat-sidenav>
+
+              <mat-sidenav-content class="p-4">
+                <router-outlet></router-outlet>
+              </mat-sidenav-content>
+            </mat-sidenav-container>
+        </ng-container>
+    </div>
+</main>

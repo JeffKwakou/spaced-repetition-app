@@ -5,6 +5,7 @@ import { DialogRevisonView } from './modals/dialog-revison-view/dialog-revison-v
 import { MaterialModule } from './modules/material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,6 +19,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     TranslateModule.forChild({
       extend: true
     })

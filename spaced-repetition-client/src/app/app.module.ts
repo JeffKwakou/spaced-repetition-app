@@ -12,7 +12,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { setAppInjector } from './app.injector';
 import { SharedModule } from './shared/shared.module';
-import { AuthenticationModule } from './authentication/authentication.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,7 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     SharedModule,
-    AuthenticationModule,
     TranslateModule.forRoot({
       loader: {
       provide: TranslateLoader,
