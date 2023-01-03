@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Flashcard } from 'src/app/shared/models/Flashcard';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   templateUrl: './revision-standard.component.html',
   styleUrls: ['./revision-standard.component.scss']
 })
-export class RevisionStandardComponent implements OnInit {
+export class RevisionStandardComponent implements OnInit, OnDestroy {
   public folderId: string;
   public flashcards: Flashcard[];
   public revisionIndex: number = 0;
@@ -25,6 +25,10 @@ export class RevisionStandardComponent implements OnInit {
       this.folderId = params.folderId;
       this.getCardToRevise();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.apiService.updateRevisionTypeCount('standard').subscribe();
   }
 
   public submitResponse(attempt: number): void {

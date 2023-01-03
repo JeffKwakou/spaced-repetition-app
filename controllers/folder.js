@@ -1,4 +1,5 @@
 const Folder = require('../models/folder');
+const Flashcard = require('../models/flashcard');
 
 exports.add = async (req, res) => {
     try {
@@ -58,6 +59,8 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     try {
         const user = req.user;
+
+        await Flashcard.deleteMany({folderId: req.params.folderid, userId: user._id})
 
         await Folder.deleteOne({_id: req.params.folderid,userId: user._id});
 

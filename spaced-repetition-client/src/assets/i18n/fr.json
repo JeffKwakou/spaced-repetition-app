@@ -1,7 +1,8 @@
 {
     "header": {
         "settings": "Paramètres",
-        "logout": "Se déconnecter"
+        "logout": "Se déconnecter",
+        "dashboard": "Tableau de bord"
     },
     "form": {
         "signup": "S'inscrire",

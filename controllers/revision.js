@@ -1,4 +1,4 @@
-const Folder = require('../models/folder');
+const User = require('../models/user');
 const Flashcard = require('../models/flashcard');
 
 exports.getFlashcards = async (req, res) => {
@@ -17,6 +17,49 @@ exports.updateFlashcard = async (req, res) => {
         const { attempt } = req.body;
 
         let date = new Date();
+
+        const user = req.user;
+
+        // Revision answer count
+        switch (attempt) {
+            case 1:
+                await User.updateOne({_id: user._id}, {
+                    $set: {
+                        notAllAnswerCount: user.notAllAnswerCount + 1
+                    }
+                });
+                break;
+            case 2:
+                await User.updateOne({_id: req.user._id}, {
+                    $set: {
+                        badAnswerCount: user.badAnswerCount + 1
+                    }
+                });
+                break;
+            case 3:
+                await User.updateOne({_id: req.user._id}, {
+                    $set: {
+                        averageAnswerCount: user.averageAnswerCount + 1
+                    }
+                });
+                break;
+            case 4:
+                await User.updateOne({_id: req.user._id}, {
+                    $set: {
+                        goodAnswerCount: user.goodAnswerCount + 1
+                    }
+                });
+                break;
+            case 5:
+                await User.updateOne({_id: req.user._id}, {
+                    $set: {
+                        veryGoodAnswerCount: user.veryGoodAnswerCount + 1
+                    }
+                });
+                break;
+            default:
+                console.log("bad response");
+        }
 
         // SM-2 Algorithm
         if (attempt >= 3) {
@@ -52,6 +95,44 @@ exports.updateFlashcard = async (req, res) => {
         });
 
         res.status(200).json(revisedCard);
+    } catch (error) {
+        res.status(500).json({success: false, message: error.message});
+    }
+};
+
+exports.updateRevisionTypeCount = async (req, res) => {
+    try {
+        const { revisionType } = req.body;
+
+        const user = await User.findOne({_id: req.user._id})
+
+        switch (revisionType) {
+            case 'standard':
+                await User.updateOne({_id: user._id}, {
+                    $set: {
+                        standardRevisionCount: user.standardRevisionCount + 1
+                    }
+                });
+                break;
+            case 'quiz':
+                await User.updateOne({_id: user._id}, {
+                    $set: {
+                        quizRevisionCount: user.quizRevisionCount + 1
+                    }
+                });
+                break;
+            case 'qcm':
+                await User.updateOne({_id: user._id}, {
+                    $set: {
+                        qcmRevisionCount: user.qcmRevisionCount + 1
+                    }
+                });
+                break;
+            default:
+                res.status(200).json("No revision type to update");
+        }
+
+        // res.status(200).json("Revision type updated");
     } catch (error) {
         res.status(500).json({success: false, message: error.message});
     }

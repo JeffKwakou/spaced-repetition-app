@@ -93,4 +93,27 @@ export class ApiService {
     }
     return this.http.put(this.APIURL + '/revision/updateflashcard/', updateFlashcard, {observe: 'response'});
   }
+
+
+  public updateRevisionTypeCount(revisionType: string) {
+    let revisionTypeToUpdate = {
+      'revisionType': revisionType
+    }
+    return this.http.put(this.APIURL + '/revision/update-revision-type-count/', revisionTypeToUpdate, {observe: 'response'});
+  }
+
+  // ---------------------------------------------
+  // DASHBOARD CHARTS ROUTES
+  // ---------------------------------------------
+  public getDistributionCardByFolder() {
+    return this.http.get(this.APIURL + '/dashboard/distribution-card-by-folder', {observe: 'response'});
+  }
+
+  public getRevisionTypePercentage() {
+    return this.http.get(this.APIURL + '/dashboard/revision-count', {observe: 'response'});
+  }
+
+  public getAnswerPercentage() {
+    return this.http.get(this.APIURL + '/dashboard/answer-count', {observe: 'response'});
+  }
 }

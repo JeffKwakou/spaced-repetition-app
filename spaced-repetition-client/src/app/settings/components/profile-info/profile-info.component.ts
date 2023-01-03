@@ -18,6 +18,7 @@ export class ProfileInfoComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    
   }
 
   get username() {
@@ -27,4 +28,6 @@ export class ProfileInfoComponent implements OnInit {
   public onSubmitProfileInfoForm(): void {
     console.log("Submited");
   }
+
+
 }

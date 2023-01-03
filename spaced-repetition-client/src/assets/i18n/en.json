@@ -1,7 +1,8 @@
 {
     "header": {
         "settings": "Settings",
-        "logout": "Logout"
+        "logout": "Logout",
+        "dashboard": "Dashboard"
     },
     "form": {
         "signup": "Sign up",

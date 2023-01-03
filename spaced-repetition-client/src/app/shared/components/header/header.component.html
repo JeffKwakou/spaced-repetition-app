@@ -19,16 +19,17 @@
                             <mat-icon>dark_mode</mat-icon>
                         </button>
                     </div>
-                    <div *ngIf="isAuthenticated">
+                    <!-- <div *ngIf="isAuthenticated">
                         <button mat-button>
                             <mat-icon matBadge="0" matBadgeColor="warn">notifications</mat-icon>
                         </button>
-                    </div>
+                    </div> -->
                     <div *ngIf="isAuthenticated">
                         <button mat-button [matMenuTriggerFor]="accountUser">
                             <mat-icon>account_circle</mat-icon>
                         </button>
                         <mat-menu #accountUser="matMenu">
+                            <button mat-menu-item routerLink="/dashboard" routerLinkActive="active-link" ><mat-icon>dashboard</mat-icon>{{ 'header.dashboard' | translate }}</button>
                             <button mat-menu-item routerLink="/settings" routerLinkActive="active-link" ><mat-icon>settings</mat-icon>{{ 'header.settings' | translate }}</button>
                             <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>{{ 'header.logout' | translate }}</button>
                         </mat-menu>

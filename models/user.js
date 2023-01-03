@@ -53,7 +53,47 @@ const UserSchema = new mongoose.Schema({
     resetPasswordExpires: {
         type: Date,
         required: false
-    }
+    },
+    standardRevisionCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    quizRevisionCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    qcmRevisionCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    veryGoodAnswerCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    goodAnswerCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    averageAnswerCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    badAnswerCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    notAllAnswerCount: {
+        type: Number,
+        required: false,
+        default: 0
+    },
 }, {timestamps: true});
 
 

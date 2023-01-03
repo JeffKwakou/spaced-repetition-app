@@ -11,4 +11,8 @@ router.put('/updateflashcard', [
     check('attempt').not().isEmpty().withMessage('The attempt field is required.'),
 ], validate, Revision.updateFlashcard);
 
+router.put('/update-revision-type-count', [
+    check('revisionType').not().isEmpty().withMessage('You must specify a type of revision'),
+], validate, Revision.updateRevisionTypeCount);
+
 module.exports = router;

@@ -1,0 +1,13 @@
+<main class="mat-typography relative top-16 mt-8 p-3 md:0">
+    <div class="container mx-auto">
+        <div class="flex justify-between items-center mb-5">
+            <h1 class="mat-display-4"><button mat-button routerLink="/folders"><mat-icon>arrow_back_ios</mat-icon></button>{{ 'header.dashboard' | translate }}</h1>
+        </div>
+
+        <div class="grid grid-cols-2">
+            <app-chart-card-by-folders></app-chart-card-by-folders>
+            <app-chart-revision-type-percentage></app-chart-revision-type-percentage>
+            <app-chart-answer-percentage></app-chart-answer-percentage>
+        </div>
+    </div>
+</main>

@@ -35,6 +35,12 @@ const routes: Routes = [
     title: 'Settings | RepeatAgain'
   },
   {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+    canActivate: [AuthGuard],
+    title: 'Dashboard | RepeatAgain'
+  },
+  {
     path: '**',
     redirectTo:'auth',
     pathMatch: 'full'
